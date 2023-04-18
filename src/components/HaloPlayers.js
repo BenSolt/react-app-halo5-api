@@ -5,42 +5,42 @@ import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 import HaloPlayerCard from "../components/HaloPlayerCard";
+import HaloCardTest from "../components/HaloCardTest";
 
 import { Routes, Link, Switch, Route } from 'react-router-dom';
 
 function HaloPlayers() {
 
-  const playersTest = "Xtianumbra"
 
-  const players = [
-    'ACA AC3',
-    'AT WILL 2703',
-    'Dash MacReady',
-    'DePal912',
-    'Divine King15',
-    'Etherblades89',
-    'goopboy123',
-    'ImagelessBean',
-    'I POLSKA I',
-    'I SpiritHope I',
-    'Killgear',
-    'MATRICKX',
-    'mdsolt',
-    'Mr DomeFace',
-    'muscleman0927',
-    'primelos',
-    'PaulSolt',
-    'Sausag3Tickl3r',
-    'S0 HELP ME GOD',
-    'thefinaledge',
-    'TheMastaChamp',
-    'TomASck',
-    'VeteranFerret58',
-    'Wife H8s Halo',
-    'XD marman',
-    'Xray Squad 90',
-    'Xtianumbra',
-  ]
+  // const players = [
+  //   'ACA AC3',
+  //   'AT WILL 2703',
+  //   'Dash MacReady',
+  //   'DePal912',
+  //   'Divine King15',
+  //   'Etherblades89',
+  //   'goopboy123',
+  //   'ImagelessBean',
+  //   'I POLSKA I',
+  //   'I SpiritHope I',
+  //   'Killgear',
+  //   'MATRICKX',
+  //   'mdsolt',
+  //   'Mr DomeFace',
+  //   'muscleman0927',
+  //   'primelos',
+  //   'PaulSolt',
+  //   'Sausag3Tickl3r',
+  //   'S0 HELP ME GOD',
+  //   'thefinaledge',
+  //   'TheMastaChamp',
+  //   'TomASck',
+  //   'VeteranFerret58',
+  //   'Wife H8s Halo',
+  //   'XD marman',
+  //   'Xray Squad 90',
+  //   'Xtianumbra',
+  // ]
 
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
@@ -86,27 +86,25 @@ function HaloPlayers() {
 
   return (
     <div>
-      <div className="navbarContainer">
-        <Link href="/" className='navItem'>HOME</Link>
-      </div>
-
-      <h2 className="title">Halo 5 Players</h2>
-
       <div className="Searchbar" >
-        <h3 className='searchtext'>Search Player:</h3>
-        {/* <form onSubmit={getInfo}> */}
+        <h3 className='searchtext'>Search Player Stats:</h3>
+
+        <div>
         <input className="Input"
           type="text"
           onChange={handleInputChange}
           value={query}
           name="name"
-          placeholder="Search player"
+          placeholder="Enter Xbox Live Username"
           autoComplete="off"
         />
-        {/* </form> */}
-        <button onClick={getInfo}>C</button>
+        <button onClick={getInfo}>Search</button>
+        </div>
       </div>
       <div>
+      <div className="cardContainer">
+      <HaloCardTest />
+      </div>
         {isSearching ? (<div>
 
           {isLoading ? (

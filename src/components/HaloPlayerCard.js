@@ -86,11 +86,11 @@ export default function HaloPlayerCard({ p }) {
                 <h6 className='textStats'>Games Lost: {GamesLost}</h6>
             </div>
 
-            {/* <div className="Stats">
+            <div className="Stats">
                 <h6 className='textStats'>Total Kills: {TotalKillsPlayer}</h6>
                 <h6 className='textStats'>Assists: {Assists}</h6>
                 <h6 className='textStats'>Deaths: {Deaths}</h6>
-            </div> */}
+            </div>
 
             <div className="Stats3">
                 <h6 className='textStats'>Games Tied: {GamesTied}</h6>

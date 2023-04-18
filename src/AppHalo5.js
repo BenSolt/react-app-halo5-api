@@ -9,14 +9,13 @@ function AppUpload() {
 
     return (
         <div className="App">
-            <h1>HALO APP</h1>
             <nav className="navbarContainer">
-                <Link to="/" className="navItem">Home Gallery</Link>
-                <Link to="/players" className="navItem">Players</Link>
+                <h1 className='title'>HALO 5 API</h1>
+                    <Link to="/" className="navItem">Home Gallery</Link>
+                    <Link to="/players" className="navItem">Players</Link>
             </nav>
-            
+
             <Routes>
-                {/* <Route path="/" element={<HomeGallery />} /> */}
                 <Route path="/players" element={<HaloPlayers />} />
             </Routes>
         </div>
