@@ -1,0 +1,118 @@
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* border: 2px solid black; */
+}
+
+.cardPlayer {
+    width: 90%;
+    border: 3px solid black;
+    background: rgb(121, 121, 121);
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    width: 90%;
+    height: auto;
+    margin: 10px;
+    background: gray;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.gamertag {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: rgb(207, 176, 0);
+    padding: 2px 0;
+    border-bottom: 3px solid black;
+    border-radius: 5px 5px 0 0;
+}
+
+.rankText {
+    margin: 4px 0;
+}
+
+.info {
+    display: flex;
+    background: rgb(204, 133, 0);
+    justify-content: space-evenly;
+    border-bottom: 2px solid black;
+    align-items: center;
+}
+
+.infoTextGroup {
+    margin: 2px;
+}
+
+.tierCard {
+    width: 65px;
+    margin: 2px;
+}
+ 
+.infoText {
+    margin: 4px;
+}
+
+.Stats {
+    display: flex;
+    justify-content: space-evenly;
+}
+.Stats2 {
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.Stats3 {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 2px solid black;
+}
+
+.textStats {
+    color: black;
+    margin: 4px;
+}
+
+h6 {
+    margin: 12px 0;
+}
+
+.h5A {
+    color: white;
+    margin-top: -15px;
+}
+
+.h5B {
+    color: white;
+    margin-top: -15px;
+}
+
+/*////////////////// SEARCH BAR ///////////////////////////////////////*/
+
+.Searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchtext {
+    padding: 8px 0 8px 0;
+
+}
+
+.Input {
+    margin: 20px;
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 15px;
+}
