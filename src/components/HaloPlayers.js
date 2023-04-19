@@ -1,7 +1,6 @@
 import '../App.css';
 
 import React, { useEffect, useState } from "react";
-//import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 import HaloPlayerCard from "../components/HaloPlayerCard";
@@ -52,33 +51,19 @@ function HaloPlayers() {
   }, [isLoading])
 
   function getInfo() {
-    console.log("SUBMIT")
-      axiosWithAuth()
-        .get(`https://www.haloapi.com/stats/h5/servicerecords/arena?players=${query}`)
-        .then(res => {
-          const info = res.data.Results;
-          // const info = res.data.Results.filter(p =>
-          //   p.Id.toLowerCase().includes(query.toLowerCase()),
-          // );
-          console.log(info);
-          setData(info);
-          setIsLoading(false);
-          setIsSearching(true);
-        });
+    axiosWithAuth()
+      .get(`https://www.haloapi.com/stats/h5/servicerecords/arena?players=${query}`)
+      .then(res => {
+        const info = res.data.Results;
+        // const info = res.data.Results.filter(p =>
+        //   p.Id.toLowerCase().includes(query.toLowerCase()),
+        // );
+        console.log(info);
+        setData(info);
+        setIsLoading(false);
+        setIsSearching(true);
+      });
   }
-
-  // useEffect(() => {
-  //   axiosWithAuth()
-  //     .get(`https://www.haloapi.com/stats/h5/servicerecords/arena?players=${players}`)
-  //     .then(res => {
-  //       const info = res.data.Results.filter(p =>
-  //         p.Id.toLowerCase().includes(query.toLowerCase()),
-  //       );
-  //       console.log(res.data.Results);
-  //       setData(info);
-  //       setIsLoading(false);
-  //     });
-  // }, [query]);
 
   const handleInputChange = event => {
     setQuery(event.target.value);
@@ -86,36 +71,36 @@ function HaloPlayers() {
 
   return (
     <div>
-      <div className="Searchbar" >
+      <div className="SearchbarContainer" >
         <h3 className='searchtext'>Search Player Stats:</h3>
 
-        <div>
-        <input className="Input"
-          type="text"
-          onChange={handleInputChange}
-          value={query}
-          name="name"
-          placeholder="Enter Xbox Live Username"
-          autoComplete="off"
-        />
-        <button onClick={getInfo}>Search</button>
+       
+          <input className="Input"
+            type="text"
+            onChange={handleInputChange}
+            value={query}
+            name="name"
+            placeholder="Enter Xbox Live Username"
+            autoComplete="off"
+          />
+          <button className='buttonSearch' onClick={getInfo}>Search</button>
         </div>
-      </div>
+
       <div>
-      <div className="cardContainer">
+        {/* <div className="cardContainer">
       <HaloCardTest />
-      </div>
+      </div> */}
         {isSearching ? (<div>
 
           {isLoading ? (
-          <div><h2>Loading...</h2></div>
-        ) : (
-          <div className="cardContainer">
-            {data.map(p => {
-              return < HaloPlayerCard key={p.Id} p={p} />
-            })}
-          </div>
-        )}
+            <div><h2>Loading...</h2></div>
+          ) : (
+            <div className="cardContainer">
+              {data.map(p => {
+                return < HaloPlayerCard key={p.Id} p={p} />
+              })}
+            </div>
+          )}
 
         </div>) : (<div></div>)}
       </div>

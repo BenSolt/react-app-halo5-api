@@ -1,4 +1,4 @@
-.cards {
+.playerCard {
     display: flex;
 }
 
@@ -82,6 +82,21 @@
     padding: 4px 0;
 }
 
+.statsContainer2 {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4px 0;
+}
+.stat2 {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    width: 46%;
+    margin: 0 5px;
+    background-color: rgb(84, 84, 84);
+    padding: 5px;
+}
+
 .statMain {
     display: flex;
     flex-direction: column;
@@ -105,12 +120,37 @@
     cursor: pointer;
 }
 
+.textStatsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.textStatsContainer2 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .textStats {
     color: rgb(210, 210, 210);
     margin: 4px;
 }
+.textStats2 {
+    display: flex;
+    color: white;
+}
 
 .textStatsBold {
+    color: white;
+    font-weight: bold;
+}
+.textStatsBold2 {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.textStatsBoldSmall {
+    font-size: 10px;
     color: white;
     font-weight: bold;
 }
@@ -131,11 +171,7 @@ h6 {
 
 /*////////////////// SEARCH BAR ///////////////////////////////////////*/
 
-.Searchbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .searchtext {
     color: white;
@@ -143,7 +179,7 @@ h6 {
 }
 
 .Input {
-    margin: 20px;
+    margin-left: 20px;
     padding: 12px;
     border: 1px solid black;
     border-radius: 5px;
@@ -212,7 +248,7 @@ h6 {
 
     /*////////////////// SEARCH BAR ///////////////////////////////////////*/
 
-    .Searchbar {
+    .SearchbarContainer {
         display: flex;
         flex-direction: column;
     }

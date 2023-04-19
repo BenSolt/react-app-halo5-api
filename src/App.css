@@ -37,3 +37,26 @@
     transform: rotate(360deg);
   }
 }
+
+/* HALO 5 API STYLING VARIOUS COMPONENTS /////////////////////// */
+
+.SearchbarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonSearch {
+  margin-left: 2%;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  width: 128px;
+  font-weight: bold;
+}
+
+.buttonSearch:hover {
+  background-color: rgb(197, 168, 1);
+  color: white;
+}

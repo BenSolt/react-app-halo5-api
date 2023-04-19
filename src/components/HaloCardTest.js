@@ -3,6 +3,8 @@ import '../css/playerCard.css';
 
 export default function HaloCardTest({ p }) {
 
+    const hsResult = 151132 /243477 * 100;
+    let hsAccuracy = hsResult.toFixed(1);
 
     return (
         <div className="cards">
@@ -108,13 +110,34 @@ export default function HaloCardTest({ p }) {
                     </div>
                 </div>
 
-                <div className="statsContainer">
-                    <div className="stat">
-                        <span className='textStats'>Head Shots</span><span className='textStatsBold'>151132</span>
+                <div className="statsContainer2">
+                    {/* <div className="stat">
+                        <span className='textStats'>Accuracy</span><span className='textStatsBold'>53%</span>
+                    </div> */}
+                    <div className="stat2">
+                        <div className="textStatsContainer">
+                            <span className='textStats2'>Shot Accuracy</span>
+                        </div>
+                        <div className="textStatsContainer2">
+                            <span className='textStatsBold2'>55%</span>
+                            <div className="textStatsContainer">
+                                <span className='textStatsBoldSmall'>Shots Fired (--)</span>
+                                <span className='textStatsBoldSmall'>Shots Hit (--)</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="stat">
-                        <span className='textStats'>Accuracy</span><span className='textStatsBold'>53%</span>
+                    <div className="stat2">
+                        <div className="textStatsContainer">
+                            <span className='textStats2'>HS Accuracy</span>
+                        </div>
+                        <div className="textStatsContainer2">
+                            <span className='textStatsBold2'>{hsAccuracy}%</span>
+                            <div className="textStatsContainer">
+                                <span className='textStatsBoldSmall'>Kills (243477)</span>
+                                <span className='textStatsBoldSmall'>Head Shots (151132)</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

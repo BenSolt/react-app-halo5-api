@@ -1,0 +1,41 @@
+.mapContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.mapCard {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    width: 200px;
+    height: auto;
+    margin: 10px;
+    background: gray;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.MapImage {
+    width: 200px;
+    height: auto;
+}
+
+.Btn {
+    color: white;
+    /* border: 2px solid black; */
+    padding: 8px;
+    margin: 0 5px 0 5px;
+    border-radius: 2px;
+    font-size: .7rem;
+    text-decoration: none;
+    /* font-weight: bold; */
+    background: rgb(199, 129, 0);
+}
