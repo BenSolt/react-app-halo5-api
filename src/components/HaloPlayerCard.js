@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import RankImageArr from '../components/RankImageArr';
+import Arr_RankImage from './Arr-RankImage';
+import Arr_ArenaStats from './Arr-ArenaStats';
 
 import '../css/playerCard.css';
 
@@ -28,10 +29,9 @@ export default function HaloPlayerCard({ p }) {
     // RANK OF PLAYER in ARENA PLAYLIST STATS /////////////////////
     const CurrentRank = p?.Result?.ArenaStats.ArenaPlaylistStats ?
         p?.Result?.ArenaStats.ArenaPlaylistStats : null
-  
-    // const CsrPercent = CurrentRank.map(info => {
-    //     info.CsrPercentile
-    // })
+
+    const GamesWonArena = p?.Result?.ArenaStats.ArenaPlaylistStats ?
+        p?.Result?.ArenaStats.ArenaPlaylistStats : null
 
 
     const HRankAttainedDesign = p?.Result?.ArenaStats.HighestCsrAttained ?
@@ -41,7 +41,7 @@ export default function HaloPlayerCard({ p }) {
         p?.Result?.ArenaStats.HighestCsrAttained.Tier : null
 
     const Assasinations = p?.Result?.ArenaStats.TotalAssassinations ?
-    p?.Result?.ArenaStats.TotalAssassinations : null
+        p?.Result?.ArenaStats.TotalAssassinations : null
 
     const GamesLost = p?.Result?.ArenaStats.TotalGamesLost
     const GamesWon = p?.Result?.ArenaStats.TotalGamesWon
@@ -60,9 +60,9 @@ export default function HaloPlayerCard({ p }) {
     let hsAccuracy = hsResult.toFixed(1);
 
 
+
     return (
         <div className="playerCard">
-
             <div className="cardPlayerPeak">
                 <h4 className="peakText">Highest Rank</h4>
                 <div className="peakImage">
@@ -107,12 +107,12 @@ export default function HaloPlayerCard({ p }) {
                         <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/unranked_00-61fca949c33f433ba7e7507d97ff130f.png" alt="rank images"></img>
                     )
                     }
-
-
                     <h4 className="peakText">1653 CSR</h4>
                 </div>
                 {/* <h4 className="peakText">Highest Desg: 6</h4> */}
             </div>
+
+
 
             <div className="cardPlayer">
                 <div className='gamertagContainer'>
@@ -120,12 +120,7 @@ export default function HaloPlayerCard({ p }) {
                     <h4 className="rankText"> Rank: {p?.Result?.SpartanRank}</h4>
                 </div>
 
-                <div className="infoContainer">
-                    <div className="statsContainerRank">
-                        <RankImageArr CurrentRank={CurrentRank}/>
-                    </div>
-                </div>
-
+                <h3 className="peakText">TOTAL STATS</h3>
                 <div className="statsContainer">
                     <div className="statMain">
                         <span className='textStats'>KDA Ratio</span><span className='textStatsBold'>{KDA}</span>
@@ -200,7 +195,7 @@ export default function HaloPlayerCard({ p }) {
                             </div>
                         </div>
                         <div className="progressBarContainer">
-                            <div className="progressBarFill" style={{ width: `${accuracy}%`, height: "12px"}}></div>
+                            <div className="progressBarFill" style={{ width: `${accuracy}%`, height: "12px" }}></div>
                         </div>
                     </div>
 
@@ -220,15 +215,29 @@ export default function HaloPlayerCard({ p }) {
                             </div>
                         </div>
                         <div className="progressBarContainer">
-                            <div className="progressBarFill" style={{ width: `${hsAccuracy}%`, height: "12px"}}></div>
+                            <div className="progressBarFill" style={{ width: `${hsAccuracy}%`, height: "12px" }}></div>
                         </div>
                     </div>
                 </div>
 
-
                 {/* <h6 className='textStats'>Games Tied: 122</h6>
                 <h6 className='textStats'>Assasinations: 2711</h6>
                 <h6>Total kills Vehic:{TotalKillsV}</h6> */}
+
+                
+
+
+
+                <div className="infoContainer">
+                <h3 className="peakText">ARENA STATS</h3>
+                    <div className="statsContainerRank">
+                        <Arr_RankImage CurrentRank={CurrentRank} />
+                    </div>
+                </div>
+
+                <Arr_ArenaStats CurrentRank={CurrentRank} />
+
+
 
             </div>
         </div>
