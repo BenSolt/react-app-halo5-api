@@ -3,7 +3,7 @@ import '../css/playerCard.css';
 
 export default function HaloCardTest({ p }) {
 
-    const hsResult = 151132 /243477 * 100;
+    const hsResult = 151132 / 243477 * 100;
     let hsAccuracy = hsResult.toFixed(1);
 
     return (
@@ -99,12 +99,19 @@ export default function HaloCardTest({ p }) {
                         <div className="textStatsContainer">
                             <span className='textStats2'>Shot Accuracy</span>
                         </div>
-                        <div className="textStatsContainer2">
+                        <div className="textStatsContainerA">
                             <span className='textStatsBold2'>55%</span>
                             <div className="textStatsContainer">
                                 <span className='textStatsBoldSmall'>Shots Fired (--)</span>
                                 <span className='textStatsBoldSmall'>Shots Hit (--)</span>
                             </div>
+                            <div className="textStatsContainer">
+                                <span className="progressKills"></span>
+                                <span className="progressHeadShots"></span>
+                            </div>
+                        </div>
+                        <div className="progressBarContainer">
+                            <div className="progressBarFill" style={{ width: `${hsAccuracy}%`, height: "12px"}}></div>
                         </div>
                     </div>
 
@@ -112,12 +119,19 @@ export default function HaloCardTest({ p }) {
                         <div className="textStatsContainer">
                             <span className='textStats2'>HS Accuracy</span>
                         </div>
-                        <div className="textStatsContainer2">
+                        <div className="textStatsContainerA">
                             <span className='textStatsBold2'>{hsAccuracy}%</span>
                             <div className="textStatsContainer">
-                                <span className='textStatsBoldSmall'>Kills (243477)</span>
+                                <span className='textStatsBoldSmall'>Kills (243477) </span>
                                 <span className='textStatsBoldSmall'>Head Shots (151132)</span>
                             </div>
+                            <div className="textStatsContainer">
+                                <span className="progressKills"></span>
+                                <span className="progressHeadShots"></span>
+                            </div>
+                        </div>
+                        <div className="progressBarContainer">
+                            <div className="progressBarFill" style={{ width: `${hsAccuracy}%`, height: "12px"}}></div>
                         </div>
                     </div>
                 </div>

@@ -25,10 +25,14 @@ export default function HaloPlayerCard({ p }) {
         p?.Result?.ArenaStats.HighestCsrAttained.Csr : null
 
 
-    // TRYING TO ADD THIS - CURRENT RANK....
+    // RANK OF PLAYER in ARENA PLAYLIST STATS /////////////////////
     const CurrentRank = p?.Result?.ArenaStats.ArenaPlaylistStats ?
         p?.Result?.ArenaStats.ArenaPlaylistStats : null
-    //p?.CsrPercentile 
+  
+    // const CsrPercent = CurrentRank.map(info => {
+    //     info.CsrPercentile
+    // })
+
 
     const HRankAttainedDesign = p?.Result?.ArenaStats.HighestCsrAttained ?
         p?.Result?.ArenaStats.HighestCsrAttained.DesignationId : null
@@ -36,7 +40,8 @@ export default function HaloPlayerCard({ p }) {
     const HRankAttainedTier = p?.Result?.ArenaStats.HighestCsrAttained ?
         p?.Result?.ArenaStats.HighestCsrAttained.Tier : null
 
-    const Assasinations = p?.Result?.ArenaStats.TotalAssassinations
+    const Assasinations = p?.Result?.ArenaStats.TotalAssassinations ?
+    p?.Result?.ArenaStats.TotalAssassinations : null
 
     const GamesLost = p?.Result?.ArenaStats.TotalGamesLost
     const GamesWon = p?.Result?.ArenaStats.TotalGamesWon
@@ -53,9 +58,6 @@ export default function HaloPlayerCard({ p }) {
 
     const hsResult = totalHeadShots / TotalKillsPlayer * 100;
     let hsAccuracy = hsResult.toFixed(1);
-
-
-   
 
 
     return (
@@ -168,7 +170,7 @@ export default function HaloPlayerCard({ p }) {
                         <span className='textStats'>Suicides</span><span className='textStatsBold'>4?</span>
                     </div>
                     <div className="stat">
-                        <span className='textStats'>Score</span><span className='textStatsBold'>4467?</span>
+                        <span className='textStats'>Assasinations</span><span className='textStatsBold'>{Assasinations}</span>
                     </div>
                     <div className="stat">
                         <span className='textStats'>Games Won</span><span className='textStatsBold'>{GamesWon}</span>
@@ -186,12 +188,19 @@ export default function HaloPlayerCard({ p }) {
                         <div className="textStatsContainer">
                             <span className='textStats2'>Shot Accuracy</span>
                         </div>
-                        <div className="textStatsContainer2">
+                        <div className="textStatsContainerA">
                             <span className='textStatsBold2'>{accuracy}%</span>
                             <div className="textStatsContainer">
                                 <span className='textStatsBoldSmall'>Shots Fired ({totalShotsFired})</span>
                                 <span className='textStatsBoldSmall'>Shots Hit ({totalShotsLanded})</span>
                             </div>
+                            <div className="textStatsContainer">
+                                <span className="progressKills"></span>
+                                <span className="progressHeadShots"></span>
+                            </div>
+                        </div>
+                        <div className="progressBarContainer">
+                            <div className="progressBarFill" style={{ width: `${accuracy}%`, height: "12px"}}></div>
                         </div>
                     </div>
 
@@ -199,12 +208,19 @@ export default function HaloPlayerCard({ p }) {
                         <div className="textStatsContainer">
                             <span className='textStats2'>HS Accuracy</span>
                         </div>
-                        <div className="textStatsContainer2">
+                        <div className="textStatsContainerA">
                             <span className='textStatsBold2'>{hsAccuracy}%</span>
                             <div className="textStatsContainer">
                                 <span className='textStatsBoldSmall'>Kills ({TotalKillsPlayer})</span>
                                 <span className='textStatsBoldSmall'>Head Shots ({totalHeadShots})</span>
                             </div>
+                            <div className="textStatsContainer">
+                                <span className="progressKills"></span>
+                                <span className="progressHeadShots"></span>
+                            </div>
+                        </div>
+                        <div className="progressBarContainer">
+                            <div className="progressBarFill" style={{ width: `${hsAccuracy}%`, height: "12px"}}></div>
                         </div>
                     </div>
                 </div>
