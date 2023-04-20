@@ -23,7 +23,7 @@
     border: 3px solid black;
     background-color: rgb(64, 64, 64);
     margin: 0 1%;
-    height: 100vh;
+    /* height: 100vh; */
     border-radius: 8px;
 }
 
@@ -169,10 +169,14 @@ h6 {
     margin-top: -15px;
 }
 
+
+
+.test {
+    display: flex;
+}
+
+
 /*////////////////// SEARCH BAR ///////////////////////////////////////*/
-
-
-
 .searchtext {
     color: white;
     padding: 8px 0 8px 0;

@@ -46,9 +46,19 @@ function HaloPlayers() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
 
+
   useEffect(() => {
-    if (isLoading) return
-  }, [isLoading])
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  function getInfo2() {
+    // setIsLoading(false);
+    setIsSearching(true);
+  };
+
 
   function getInfo() {
     axiosWithAuth()
@@ -60,7 +70,7 @@ function HaloPlayers() {
         // );
         console.log(info);
         setData(info);
-        setIsLoading(false);
+        //setIsLoading(false);
         setIsSearching(true);
       });
   }
@@ -74,28 +84,27 @@ function HaloPlayers() {
       <div className="SearchbarContainer" >
         <h3 className='searchtext'>Search Player Stats:</h3>
 
-       
-          <input className="Input"
-            type="text"
-            onChange={handleInputChange}
-            value={query}
-            name="name"
-            placeholder="Enter Xbox Live Username"
-            autoComplete="off"
-          />
-          <button className='buttonSearch' onClick={getInfo}>Search</button>
-        </div>
+        <input className="Input"
+          type="text"
+          onChange={handleInputChange}
+          value={query}
+          name="name"
+          placeholder="Enter Xbox Live Username"
+          autoComplete="off"
+        />
+        <button className='buttonSearch' onClick={getInfo}>Search</button>
+      </div>
 
       <div>
-        {/* <div className="cardContainer">
-      <HaloCardTest />
-      </div> */}
-        {isSearching ? (<div>
 
+        {isSearching ? ( <div>
           {isLoading ? (
             <div><h2>Loading...</h2></div>
           ) : (
             <div className="cardContainer">
+
+              {/* <HaloCardTest /> */}
+
               {data.map(p => {
                 return < HaloPlayerCard key={p.Id} p={p} />
               })}

@@ -7,7 +7,7 @@ export default function HaloCardTest({ p }) {
     let hsAccuracy = hsResult.toFixed(1);
 
     return (
-        <div className="cards">
+        <div className="playerCard">
 
             <div className="cardPlayerPeak">
                 <h4 className="peakText">Highest Rank</h4>
@@ -32,25 +32,6 @@ export default function HaloCardTest({ p }) {
                         <h4 className="textStats">Current Rank #</h4>
                     </div>
 
-                    <div className="infoTextGroup">
-                        {/* <img className="tierCard" alt="img"></img> */}
-                        {/* {HRankAttainedDesign === 6 ? (
-                        <img className="tierCard" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_top_array00-783f32318c8c49eda0365c5daa50f5b6.png"></img>
-                    ) : HRankAttainedDesign === 7 ? (
-                        <img className="tierCard" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_top_array01-3755e5127c9c46368e648d58da44390e.png"></img>
-                    ) : HRankAttainedDesign === null ? (
-                        <img className="tierCard" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/unranked_00-61fca949c33f433ba7e7507d97ff130f.png"></img>
-                    ) : HRankAttainedDesign === 4 ? (
-                        <img className="tierCard" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_platinum_array01-c8df3dc366ea49209762f9b08189ffa6.png"></img>
-                    ) : HRankAttainedDesign === 2 ? (
-                        <img className="tierCard" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_silver_array01-b4739333586340bda2eed6099e630f92.png"></img>
-                    ) : HRankAttainedDesign === 5 ? (
-                        <img className="tierCard" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_diamond_array01-9721d95b267942dcb1edcce6dfc25631.png"></img>
-                    ) : (
-                        <img className="tierCard" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_platinum_array01-c8df3dc366ea49209762f9b08189ffa6.png"></img>
-                    )
-                    } */}
-                    </div>
                 </div>
 
                 <div className="statsContainer">

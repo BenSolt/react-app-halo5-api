@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-color: #282c34;
+  height: 100vh;
 }
 
 .App-logo {
@@ -47,6 +48,7 @@
 }
 
 .buttonSearch {
+  border: none;
   margin-left: 2%;
   border-radius: 4px;
   background-color: white;
@@ -54,6 +56,7 @@
   padding: 10px;
   width: 128px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .buttonSearch:hover {

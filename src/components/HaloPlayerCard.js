@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import RankImageArr from '../components/RankImageArr';
+
 import '../css/playerCard.css';
 
 export default function HaloPlayerCard({ p }) {
@@ -27,10 +29,12 @@ export default function HaloPlayerCard({ p }) {
     const CurrentRank = p?.Result?.ArenaStats.ArenaPlaylistStats ?
         p?.Result?.ArenaStats.ArenaPlaylistStats : null
     //p?.CsrPercentile 
-    //p?.Result?.ArenaStats.ArenaPlaylistStats.p?.Csr : null
 
     const HRankAttainedDesign = p?.Result?.ArenaStats.HighestCsrAttained ?
         p?.Result?.ArenaStats.HighestCsrAttained.DesignationId : null
+
+    const HRankAttainedTier = p?.Result?.ArenaStats.HighestCsrAttained ?
+        p?.Result?.ArenaStats.HighestCsrAttained.Tier : null
 
     const Assasinations = p?.Result?.ArenaStats.TotalAssassinations
 
@@ -50,14 +54,60 @@ export default function HaloPlayerCard({ p }) {
     const hsResult = totalHeadShots / TotalKillsPlayer * 100;
     let hsAccuracy = hsResult.toFixed(1);
 
+
+   
+
+
     return (
         <div className="playerCard">
 
             <div className="cardPlayerPeak">
                 <h4 className="peakText">Highest Rank</h4>
                 <div className="peakImage">
-                    <img className="tierCardImage" alt="img"></img>
-                    <h4 className="peakText">1653</h4>
+                    {HRankAttainedDesign === null ? (
+                        // UNRANKED ////////////////
+                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/unranked_00-61fca949c33f433ba7e7507d97ff130f.png" alt="rank images"></img>
+
+                    ) : HRankAttainedDesign === 1 ? (
+                        // BRONZE TIER 1
+                        <img class="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_bronze_array01-c68c7e495d124eba8343c0874d74cd36.png" alt="rank images"></img>
+
+                    ) : HRankAttainedDesign === 2 ? (
+                        // SILVER TIER 1//////////////////
+                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_silver_array01-b4739333586340bda2eed6099e630f92.png" alt="rank images"></img>
+
+                    ) : HRankAttainedDesign === 3 ? (
+                        // GOLD TIER 1//////////////////
+                        <img class="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_gold_array01-5053cd291bb74d6a852f0cb90a62195e.png" alt="rank images"></img>
+
+                    ) : HRankAttainedDesign === 4 ? (
+                        // PLATINUM TIER 1////////////////
+                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_platinum_array01-c8df3dc366ea49209762f9b08189ffa6.png" alt="rank images"></img>
+
+                    ) : HRankAttainedDesign === 5 && HRankAttainedTier === 3 ? (
+
+                        // DIAMOND 1//////////////////
+                        // 
+
+                        // DIAMOND 3//////////////////
+                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_diamond_array03-b740122fc19c4e829bb8c8fda023a1f9.png" alt="rank images"></img>
+
+                    ) : HRankAttainedDesign === 6 ? (
+                        // ONYX ////////////////
+                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_top_array00-783f32318c8c49eda0365c5daa50f5b6.png" alt="rank images"></img>
+
+                    ) : HRankAttainedDesign === 7 ? (
+                        // CHAMPION ////////////////
+                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_top_array01-3755e5127c9c46368e648d58da44390e.png" alt="rank images"></img>
+
+                    ) : (
+                        // UNRANKED AGAIN.. NEED CHANGE //////////
+                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/unranked_00-61fca949c33f433ba7e7507d97ff130f.png" alt="rank images"></img>
+                    )
+                    }
+
+
+                    <h4 className="peakText">1653 CSR</h4>
                 </div>
                 {/* <h4 className="peakText">Highest Desg: 6</h4> */}
             </div>
@@ -70,27 +120,7 @@ export default function HaloPlayerCard({ p }) {
 
                 <div className="infoContainer">
                     <div className="statsContainerRank">
-                        {HRankAttainedDesign === 6 ? (
-                            <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_top_array00-783f32318c8c49eda0365c5daa50f5b6.png"></img>
-                        ) : HRankAttainedDesign === 7 ? (
-                            <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_top_array01-3755e5127c9c46368e648d58da44390e.png"></img>
-                        ) : HRankAttainedDesign === null ? (
-                            <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/unranked_00-61fca949c33f433ba7e7507d97ff130f.png"></img>
-                        ) : HRankAttainedDesign === 4 ? (
-                            <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_platinum_array01-c8df3dc366ea49209762f9b08189ffa6.png"></img>
-                        ) : HRankAttainedDesign === 2 ? (
-                            <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_silver_array01-b4739333586340bda2eed6099e630f92.png"></img>
-                        ) : HRankAttainedDesign === 5 ? (
-                            <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_diamond_array01-9721d95b267942dcb1edcce6dfc25631.png"></img>
-                        ) : (
-                            <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_platinum_array01-c8df3dc366ea49209762f9b08189ffa6.png"></img>
-                        )
-                        }
-                        {HighestRankAttained === null ? (<h4 className="textStats">0 CSR</h4>) : (<h4 className="textStats2">{HighestRankAttained} CSR</h4>)}
-                
-                        {/* {CurrentRank.map(info => {
-                            return<h4 className="textStats2">{info.Csr.DesignationId}</h4>
-                        })} */}
+                        <RankImageArr CurrentRank={CurrentRank}/>
                     </div>
                 </div>
 
@@ -132,10 +162,10 @@ export default function HaloPlayerCard({ p }) {
 
                 <div className="statsContainer">
                     <div className="stat">
-                        <span className='textStats'>Betrayals</span><span className='textStatsBold'>--</span>
+                        <span className='textStats'>Betrayals</span><span className='textStatsBold'>--?</span>
                     </div>
                     <div className="stat">
-                        <span className='textStats'>Suicides</span><span className='textStatsBold'>4</span>
+                        <span className='textStats'>Suicides</span><span className='textStatsBold'>4?</span>
                     </div>
                     <div className="stat">
                         <span className='textStats'>Score</span><span className='textStatsBold'>4467?</span>
