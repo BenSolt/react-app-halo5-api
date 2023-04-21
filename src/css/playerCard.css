@@ -2,10 +2,18 @@
     display: flex;
 }
 
+.playlistName {
+    text-align: left;
+    margin-left: 1%;
+    color: white;
+    text-decoration: underline 2px;
+}
+
 .cardPlayerPeak {
     background-color: rgb(64, 64, 64);
     border-radius: 8px;
     width: 30%;
+    height: 180px;
     margin: 0 1%;
 }
 
@@ -82,32 +90,22 @@
     /* justify-content: space-evenly; */
 }
 
-.section1 {
+.percentileSection {
     display: flex;
     align-items: center;
     margin-right: 50px;
 }
-/* ////////////////////////////////////////////////////////// */
+/* // 4 Box Items at top.//////////////////////////////////////////////////////// */
 
 .statsContainer {
     display: flex;
     justify-content: space-evenly;
     padding: 4px 0;
 }
-
-.statsContainer2 {
+.statsContainerB {
     display: flex;
-    justify-content: space-evenly;
-    padding: 12px 0;
-}
-.stat2 {
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    width: 46%;
-    margin: 0 5px;
-    background-color: rgb(84, 84, 84);
-    padding: 5px;
+    width: 50%;
+    height: 80px;
 }
 
 .statMain {
@@ -115,7 +113,32 @@
     flex-direction: column;
     background-color: rgb(84, 84, 84);
     border-radius: 5px;
-    width: 22%;
+    width: 48%;
+    padding: 3px 0;
+    margin: 0 4px;
+}
+
+.statsContainer2 {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 12px 0;
+}
+.statsContainer2B {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    width: 46%;
+    margin: 0 5px;
+    background-color: rgb(84, 84, 84);
+    padding: 10px;
+}
+
+
+
+.statMain2 {
+    display: flex;
+    border-radius: 5px;
+    width: 100%;
     padding: 3px 0;
     margin: 0;
 }
@@ -124,7 +147,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 5px;
-    width: 23%;
+    width: 48%;
     margin: 0 5px;
 }
 
@@ -152,7 +175,7 @@
     color: white;
 }
 .textTier {
-     margin: 4px;
+     margin: 1%;
      display: flex;
      color: white;
 }
@@ -232,17 +255,17 @@ h6 {
 /* //////////RESPONSIVE ////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////// */
 @media only screen and (max-width: 425px) {
-    .cards {
+    .playerCard {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
     .cardPlayerPeak {
-        border: 3px solid black;
         background-color: rgb(64, 64, 64);
         border-radius: 8px;
         width: 90%;
+        height: 160px;
         margin: 2% 1%;
     }
 
@@ -256,7 +279,6 @@ h6 {
 
     .cardPlayer {
         width: 90%;
-        border: 3px solid black;
         background-color: rgb(64, 64, 64);
         margin: 0 1%;
         height: auto;
@@ -268,6 +290,11 @@ h6 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    .statsContainerB {
+        display: flex;
+        width: 90%;
+        height: 80px;
     }
 
     .statMain {
@@ -287,7 +314,23 @@ h6 {
         margin: 4px 5px;
     }
 
-
+    .statsContainer2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 12px 0;
+        justify-content: center;
+        align-items: center;
+    }
+    .statsContainer2B {
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        width: 90%;
+        margin: 5px;
+        background-color: rgb(84, 84, 84);
+        padding: 10px;
+    }
 
     /*////////////////// SEARCH BAR ///////////////////////////////////////*/
 

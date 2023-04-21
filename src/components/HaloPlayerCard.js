@@ -21,18 +21,9 @@ export default function HaloPlayerCard({ p }) {
     const KillDivide = KillsAssits / Deaths * 1
     let KDA = KillDivide.toFixed(2);
 
-
-    const HighestRankAttained = p?.Result?.ArenaStats.HighestCsrAttained ?
-        p?.Result?.ArenaStats.HighestCsrAttained.Csr : null
-
-
     // RANK OF PLAYER in ARENA PLAYLIST STATS /////////////////////
     const CurrentRank = p?.Result?.ArenaStats.ArenaPlaylistStats ?
         p?.Result?.ArenaStats.ArenaPlaylistStats : null
-
-    const GamesWonArena = p?.Result?.ArenaStats.ArenaPlaylistStats ?
-        p?.Result?.ArenaStats.ArenaPlaylistStats : null
-
 
     const HRankAttainedDesign = p?.Result?.ArenaStats.HighestCsrAttained ?
         p?.Result?.ArenaStats.HighestCsrAttained.DesignationId : null
@@ -42,6 +33,9 @@ export default function HaloPlayerCard({ p }) {
 
     const Assasinations = p?.Result?.ArenaStats.TotalAssassinations ?
         p?.Result?.ArenaStats.TotalAssassinations : null
+
+    const GroundPounds = p?.Result?.ArenaStats.TotalGroundPoundKills ?
+        p?.Result?.ArenaStats.TotalGroundPoundKills : null
 
     const GamesLost = p?.Result?.ArenaStats.TotalGamesLost
     const GamesWon = p?.Result?.ArenaStats.TotalGamesWon
@@ -122,64 +116,80 @@ export default function HaloPlayerCard({ p }) {
 
                 <h3 className="peakText">TOTAL STATS</h3>
                 <div className="statsContainer">
-                    <div className="statMain">
-                        <span className='textStats'>KDA Ratio</span><span className='textStatsBold'>{KDA}</span>
+                    <div className="statsContainerB">
+                        <div className="statMain">
+                            <span className='textStats'>KDA Ratio</span><span className='textStatsBold'>{KDA}</span>
+                        </div>
+                        <div className="statMain">
+                            <span className='textStats'>Win %</span><span className='textStatsBold'>{winPercentage}</span>
+                        </div>
                     </div>
-                    <div className="statMain">
-                        <span className='textStats'>Win %</span><span className='textStatsBold'>{winPercentage}</span>
-                    </div>
-                    <div className="statMain">
-                        <span className='textStats'>Average KDA</span><span className='textStatsBold'>--</span>
-                    </div>
-                    <div className="statMain">
-                        <span className='textStats'>Average Damage</span><span className='textStatsBold'>--</span>
-                    </div>
-                </div>
-
-                <div className="statsContainer">
-                    <div className="stat">
-                        <span className='textStats'>Total Kills</span><span className='textStatsBold'>{TotalKillsPlayer}</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Assists</span><span className='textStatsBold'>{Assists}</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Deaths</span><span className='textStatsBold'>{Deaths}</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Head Shots</span><span className='textStatsBold'>{totalHeadShots}</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Damage Taken</span><span className='textStatsBold'>--</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Damage Dealt</span><span className='textStatsBold'>--</span>
+                    <div className="statsContainerB">
+                        <div className="statMain">
+                            <span className='textStats'>Average KDA</span><span className='textStatsBold'>--</span>
+                        </div>
+                        <div className="statMain">
+                            <span className='textStats'>Average Damage</span><span className='textStatsBold'>--</span>
+                        </div>
                     </div>
                 </div>
 
                 <div className="statsContainer">
-                    <div className="stat">
-                        <span className='textStats'>Betrayals</span><span className='textStatsBold'>--?</span>
+                    <div className="statsContainerB">
+                        <div className="stat">
+                            <span className='textStats'>Total Kills</span><span className='textStatsBold'>{TotalKillsPlayer}</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Assists</span><span className='textStatsBold'>{Assists}</span>
+                        </div>
                     </div>
-                    <div className="stat">
-                        <span className='textStats'>Suicides</span><span className='textStatsBold'>4?</span>
+                    <div className="statsContainerB">
+                        <div className="stat">
+                            <span className='textStats'>Deaths</span><span className='textStatsBold'>{Deaths}</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Head Shots</span><span className='textStatsBold'>{totalHeadShots}</span>
+                        </div>
                     </div>
-                    <div className="stat">
-                        <span className='textStats'>Assasinations</span><span className='textStatsBold'>{Assasinations}</span>
+                    <div className="statsContainerB">
+                        <div className="stat">
+                            <span className='textStats'>Damage Taken</span><span className='textStatsBold'>--</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Damage Dealt</span><span className='textStatsBold'>--</span>
+                        </div>
                     </div>
-                    <div className="stat">
-                        <span className='textStats'>Games Won</span><span className='textStatsBold'>{GamesWon}</span>
+                </div>
+
+                <div className="statsContainer">
+                    <div className="statsContainerB">
+                        <div className="stat">
+                            <span className='textStats'>Games Won</span><span className='textStatsBold'>{GamesWon}</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Games Lost</span><span className='textStatsBold'>{GamesLost}</span>
+                        </div>
                     </div>
-                    <div className="stat">
-                        <span className='textStats'>Games Lost</span><span className='textStatsBold'>{GamesLost}</span>
+                    <div className="statsContainerB">
+                        <div className="stat">
+                            <span className='textStats'>Matches Tied</span><span className='textStatsBold'>{GamesTied}</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Betrayals</span><span className='textStatsBold'>--?</span>
+                        </div>
                     </div>
-                    <div className="stat">
-                        <span className='textStats'>Matches Tied</span><span className='textStatsBold'>{GamesTied}</span>
+                    <div className="statsContainerB">
+                        <div className="stat">
+                            <span className='textStats'>Assasinations</span><span className='textStatsBold'>{Assasinations}</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Ground Pounds</span><span className='textStatsBold'>{GroundPounds}</span>
+                        </div>
                     </div>
                 </div>
 
                 <div className="statsContainer2">
-                    <div className="stat2">
+                    <div className="statsContainer2B">
                         <div className="textStatsContainer">
                             <span className='textStats2'>Shot Accuracy</span>
                         </div>
@@ -199,7 +209,7 @@ export default function HaloPlayerCard({ p }) {
                         </div>
                     </div>
 
-                    <div className="stat2">
+                    <div className="statsContainer2B">
                         <div className="textStatsContainer">
                             <span className='textStats2'>HS Accuracy</span>
                         </div>
@@ -224,21 +234,18 @@ export default function HaloPlayerCard({ p }) {
                 <h6 className='textStats'>Assasinations: 2711</h6>
                 <h6>Total kills Vehic:{TotalKillsV}</h6> */}
 
-                
+
 
 
 
                 <div className="infoContainer">
-                <h3 className="peakText">ARENA STATS</h3>
+                    <h3 className="peakText">CURRENT ARENA PLAYLIST STATS</h3>
                     <div className="statsContainerRank">
+                        <h4 className="playlistName">SLAYER</h4>
                         <Arr_RankImage CurrentRank={CurrentRank} />
                     </div>
                 </div>
-
                 <Arr_ArenaStats CurrentRank={CurrentRank} />
-
-
-
             </div>
         </div>
     )

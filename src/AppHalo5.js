@@ -5,6 +5,8 @@ import HaloPlayers from './components/HaloPlayers';
 import HaloMaps from './components/HaloMaps';
 import HaloRanks from './components/HaloRanks';
 
+import HaloPlaylists from './components/HaloPlaylists';
+
 import './css/navbar.css';
 
 function AppUpload() {
@@ -16,6 +18,8 @@ function AppUpload() {
                     <Link to="/" className="navItem">Home</Link>
                     <Link to="/maps" className="navItem">Maps</Link>
                     <Link to="/ranks" className="navItem">Ranks</Link>
+
+                    {/* <Link to="/playlists" className="navItem">Playlists</Link> */}
             </nav>
 
         
@@ -23,6 +27,8 @@ function AppUpload() {
                 <Route path="/" element={<HaloPlayers/>} />
                 <Route path="/maps" element={<HaloMaps />} />
                 <Route path="/ranks" element={<HaloRanks />} />
+
+                {/* <Route path="/playlists" element={<HaloPlaylists />} /> */}
             </Routes>
         </div>
 

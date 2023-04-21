@@ -35,115 +35,124 @@ export default function HaloCardTest({ p }) {
                 </div>
 
                 <div className="statsContainer">
-                    <div className="statMain">
-                        <span className='textStats'>KDA Ratio</span><span className='textStatsBold'>2.10</span>
+                    <div className="statsContainerB">
+                        <div className="statMain">
+                            <span className='textStats'>KDA Ratio</span><span className='textStatsBold'>2.10</span>
+                        </div>
+                        <div className="statMain">
+                            <span className='textStats'>Win %</span><span className='textStatsBold'>--</span>
+                        </div>
                     </div>
-                    <div className="statMain">
-                        <span className='textStats'>Win %</span><span className='textStatsBold'>--</span>
+
+                    <div className="statsContainerB">
+                        <div className="statMain">
+                            <span className='textStats'>Average KDA</span><span className='textStatsBold'>--</span>
+                        </div>
+                        <div className="statMain">
+                            <span className='textStats'>Average Damage</span><span className='textStatsBold'>--</span>
+                        </div>
                     </div>
-                    <div className="statMain">
-                        <span className='textStats'>Average KDA</span><span className='textStatsBold'>--</span>
-                    </div>
-                    <div className="statMain">
-                        <span className='textStats'>Average Damage</span><span className='textStatsBold'>--</span>
-                    </div>
+
                 </div>
 
                 <div className="statsContainer">
-                    <div className="stat">
-                        <span className='textStats'>Total Kills</span><span className='textStatsBold'>243477</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Assists</span><span className='textStatsBold'>146220</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Deaths</span><span className='textStatsBold'>185601</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Head Shots</span><span className='textStatsBold'>151132</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Damage Taken</span><span className='textStatsBold'>--</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Damage Dealt</span><span className='textStatsBold'>--</span>
-                    </div>
-                </div>
-
-                <div className="statsContainer">
-                    <div className="stat">
-                        <span className='textStats'>Betrayals</span><span className='textStatsBold'>--</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Suicides</span><span className='textStatsBold'>4</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Score</span><span className='textStatsBold'>4467?</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Games Won</span><span className='textStatsBold'>11968</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Games Lost</span><span className='textStatsBold'>8535</span>
-                    </div>
-                    <div className="stat">
-                        <span className='textStats'>Matches DNF</span><span className='textStatsBold'>4</span>
-                    </div>
-                </div>
-
-                <div className="statsContainer2">
-                    {/* <div className="stat">
-                        <span className='textStats'>Accuracy</span><span className='textStatsBold'>53%</span>
-                    </div> */}
-                    <div className="stat2">
-                        <div className="textStatsContainer">
-                            <span className='textStats2'>Shot Accuracy</span>
+                    <div className="statsContainerB">
+                        <div className="stat">
+                            <span className='textStats'>Total Kills</span><span className='textStatsBold'>243477</span>
                         </div>
-                        <div className="textStatsContainerA">
-                            <span className='textStatsBold2'>55%</span>
-                            <div className="textStatsContainer">
-                                <span className='textStatsBoldSmall'>Shots Fired (--)</span>
-                                <span className='textStatsBoldSmall'>Shots Hit (--)</span>
-                            </div>
-                            <div className="textStatsContainer">
-                                <span className="progressKills"></span>
-                                <span className="progressHeadShots"></span>
-                            </div>
+                        <div className="stat">
+                            <span className='textStats'>Assists</span><span className='textStatsBold'>146220</span>
                         </div>
-                        <div className="progressBarContainer">
-                            <div className="progressBarFill" style={{ width: `${hsAccuracy}%`, height: "12px"}}></div>
+                    </div>
+                    <div className="statsContainerB">
+                        <div className="stat">
+                            <span className='textStats'>Deaths</span><span className='textStatsBold'>185601</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Head Shots</span><span className='textStatsBold'>151132</span>
+                        </div>
+                    </div>
+                    <div className="statsContainerB">
+                        <div className="stat">
+                            <span className='textStats'>Damage Taken</span><span className='textStatsBold'>--</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Damage Dealt</span><span className='textStatsBold'>--</span>
+                        </div>
+                    </div> 
+                    </div>
+
+                    <div className="statsContainer">
+                        <div className="stat">
+                            <span className='textStats'>Betrayals</span><span className='textStatsBold'>--</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Suicides</span><span className='textStatsBold'>4</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Score</span><span className='textStatsBold'>4467?</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Games Won</span><span className='textStatsBold'>11968</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Games Lost</span><span className='textStatsBold'>8535</span>
+                        </div>
+                        <div className="stat">
+                            <span className='textStats'>Matches DNF</span><span className='textStatsBold'>4</span>
                         </div>
                     </div>
 
-                    <div className="stat2">
-                        <div className="textStatsContainer">
-                            <span className='textStats2'>HS Accuracy</span>
-                        </div>
-                        <div className="textStatsContainerA">
-                            <span className='textStatsBold2'>{hsAccuracy}%</span>
+                    <div className="statsContainer2">
+                        <div className="statsContainer2B">
                             <div className="textStatsContainer">
-                                <span className='textStatsBoldSmall'>Kills (243477) </span>
-                                <span className='textStatsBoldSmall'>Head Shots (151132)</span>
+                                <span className='textStats2'>Shot Accuracy</span>
                             </div>
-                            <div className="textStatsContainer">
-                                <span className="progressKills"></span>
-                                <span className="progressHeadShots"></span>
+                            <div className="textStatsContainerA">
+                                <span className='textStatsBold2'>55%</span>
+                                <div className="textStatsContainer">
+                                    <span className='textStatsBoldSmall'>Shots Fired (--)</span>
+                                    <span className='textStatsBoldSmall'>Shots Hit (--)</span>
+                                </div>
+                                <div className="textStatsContainer">
+                                    <span className="progressKills"></span>
+                                    <span className="progressHeadShots"></span>
+                                </div>
+                            </div>
+                            <div className="progressBarContainer">
+                                <div className="progressBarFill" style={{ width: `${hsAccuracy}%`, height: "12px" }}></div>
                             </div>
                         </div>
-                        <div className="progressBarContainer">
-                            <div className="progressBarFill" style={{ width: `${hsAccuracy}%`, height: "12px"}}></div>
+
+                        <div className="statsContainer2B">
+                            <div className="textStatsContainer">
+                                <span className='textStats2'>HS Accuracy</span>
+                            </div>
+                            <div className="textStatsContainerA">
+                                <span className='textStatsBold2'>{hsAccuracy}%</span>
+                                <div className="textStatsContainer">
+                                    <span className='textStatsBoldSmall'>Kills (243477) </span>
+                                    <span className='textStatsBoldSmall'>Head Shots (151132)</span>
+                                </div>
+                                <div className="textStatsContainer">
+                                    <span className="progressKills"></span>
+                                    <span className="progressHeadShots"></span>
+                                </div>
+                            </div>
+                            <div className="progressBarContainer">
+                                <div className="progressBarFill" style={{ width: `${hsAccuracy}%`, height: "12px" }}></div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* <h6 className='textStats'>Shots Fired: {totalShotsFired}</h6>
+                    {/* <h6 className='textStats'>Shots Fired: {totalShotsFired}</h6>
                 <h6 className='textStats'>Shots Landed: {totalShotsLanded}</h6>
 
                 <h6 className='textStats'>Games Tied: 122</h6>
                 <h6 className='textStats'>Assasinations: 2711</h6>
                 <h6>Total kills Vehic:{TotalKillsV}</h6> */}
-            </div>
+                </div>
 
-        </div>
-    )
+            </div>
+            )
 }
