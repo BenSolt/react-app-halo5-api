@@ -3,9 +3,6 @@ import React from "react";
 
 export default function HaloRank({ r }) {
 
-    //Number within Tier (1-6)
-    // const aRank = h.tiers.filter(str => (str.id === 1))
-
     return (
         <div>
             <h4 className="title">{r?.name}</h4>
