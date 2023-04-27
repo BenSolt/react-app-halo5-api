@@ -1,0 +1,69 @@
+.matchCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    background-color: rgb(84, 84, 84);
+    border-radius: 8px;
+}
+
+.textStats {
+    color: rgb(210, 210, 210);
+    /* margin: 4px; */
+    padding: 8px;
+}
+
+.mapImageSection1 {
+    width: 50%;
+}
+
+.matchImage {
+    width: 90%;
+    margin: 2%;
+}
+
+.section2 {
+    width: 50%;
+}
+
+.green {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: green;
+}
+
+.red {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: red;
+}
+
+.matchStats {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+@media only screen and (max-width: 425px) {
+
+    .matchCard {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        background-color: rgb(84, 84, 84);
+        border-radius: 8px;
+    }
+
+    .mapImageSection1 {
+        width: 100%;
+    }
+
+    .section2 {
+        width: 100%;
+    }
+}

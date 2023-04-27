@@ -39,22 +39,38 @@
 
   .navbarContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     justify-content: space-evenly;
+    height: 100px;
   }
 
   .title {
-    font-size: 0.8rem;
-    margin: 10px 0;
+    margin: 0;
   }
-  
+
   .navItem {
-    padding: 15px;
+    padding: 12px;
     background-color: rgb(82, 82, 82);
     color: white;
-  
-    margin: 0 10px 0 10px;
+
+    margin: 10px;
+    border-radius: 2px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+}
+
+@media only screen and (max-width: 320px) {
+  .navItem {
+    padding: 10px;
+    background-color: rgb(82, 82, 82);
+    color: white;
+
+    margin: 5px;
     border-radius: 2px;
     font-size: 0.8rem;
     text-decoration: none;

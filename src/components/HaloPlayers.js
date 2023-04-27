@@ -82,32 +82,33 @@ function HaloPlayers() {
   return (
     <div>
       <div className="SearchbarContainer" >
-        <h3 className='searchtext'>Search Player Stats:</h3>
-
-        <input className="Input"
-          type="text"
-          onChange={handleInputChange}
-          value={query}
-          name="name"
-          placeholder="Enter Xbox Live Username"
-          autoComplete="off"
-        />
-        <button className='buttonSearch' onClick={getInfo}>Search</button>
+        <h3 className="searchtext">Search Player Stats:</h3>
+        <div className="inputContainer">
+          <input className="Input"
+            type="text"
+            onChange={handleInputChange}
+            value={query}
+            name="name"
+            placeholder="Enter Xbox Live Username"
+            autoComplete="off"
+          />
+          <button className="buttonSearch" onClick={getInfo2}>Search</button>
+        </div>
       </div>
 
       <div>
 
-        {isSearching ? ( <div>
+        {isSearching ? (<div>
           {isLoading ? (
             <div><h2>Loading...</h2></div>
           ) : (
             <div className="cardContainer">
 
-              {/* <HaloCardTest /> */}
+              <HaloCardTest />
 
-              {data.map(p => {
+              {/* {data.map(p => {
                 return < HaloPlayerCard key={p.Id} p={p} />
-              })}
+              })} */}
             </div>
           )}
 

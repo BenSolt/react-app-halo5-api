@@ -37,7 +37,9 @@ function HaloPlaylists() {
                     ) : (
                         <div className="cardContainer">
                             {data.map(p => {
-                                return <h3>{p?.name}</h3>
+                                return <div key={p.id}>
+                                    <h3>{p?.name}</h3>
+                                    </div>
                             })}
                         </div>
                     )}

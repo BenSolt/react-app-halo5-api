@@ -24,11 +24,15 @@ function HaloMaps() {
       });
   }
 
+
+
   return (
     <div>
-      <div className="SearchbarContainer" >
-        <h3 className='searchtext'>HALO 5 MAPS</h3>
+      <div className="SearchbarContainer2" >
+        <h3 className='searchtext'>Halo 5 Maps</h3>
         <button className='buttonSearch' onClick={getInfo}>Search</button>
+
+        {/* <button className='Btn'onClick={() => (console.log('arena'))}>Arena Maps</button> */}
       </div>
 
       {isSearching ? (<div>

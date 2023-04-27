@@ -21,7 +21,7 @@ function HaloRanks() {
                 const info = res.data
                 console.log(info);
                 setData(info);
-                // setIsLoading(false);
+                setIsLoading(false);
                 setIsSearching(true);
             });
     }
@@ -29,8 +29,8 @@ function HaloRanks() {
     return (
         <div>
             <div>
-                <div className="SearchbarContainer" >
-                    <h3 className='searchtext'>HALO 5 Ranks</h3>
+                <div className="SearchbarContainer2" >
+                    <h3 className='searchtext'>Halo 5 Ranks</h3>
                     <button className='buttonSearch' onClick={getInfo}>Search</button>
                 </div>
 
