@@ -46,6 +46,39 @@
     justify-content: space-evenly;
 }
 
+/* HALO MATCH RESULTS STYLING ////////////////////////////////////////// */
+
+.matchCardContainer { 
+  width: 100%;
+}
+
+.matchCardResults {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .1rem;
+    padding: 5px;
+    background-color: rgb(84, 84, 84);
+    border-radius: 8px;
+}
+
+.redTeam {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: red;
+    width: 100%;
+}
+
+.blueTeam {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: blue;
+    width: 100%;
+}
+/* ////////////////////////////////////////////////// */
+
 
 @media only screen and (max-width: 425px) {
 
