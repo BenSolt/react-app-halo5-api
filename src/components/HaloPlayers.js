@@ -4,9 +4,8 @@ import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 import HaloPlayerCard from "../components/HaloPlayerCard";
-import HaloCardTest from "../components/HaloCardTest";
+import TestHaloCard from "../components/TestHaloCard";
 
-import { Routes, Link, Switch, Route } from 'react-router-dom';
 
 function HaloPlayers() {
 
@@ -40,6 +39,11 @@ function HaloPlayers() {
   //   'Xray Squad 90',
   //   'Xtianumbra',
   // ]
+
+
+// 0 : Id: "jegan18"
+// Result: {ArenaStats: {…}, PlayerId: {…}, SpartanRank: 148, Xp: 14127106}
+// ResultCode: 0
 
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
@@ -92,7 +96,7 @@ function HaloPlayers() {
             placeholder="Enter Xbox Live Username"
             autoComplete="off"
           />
-          <button className="buttonSearch" onClick={getInfo2}>Search</button>
+          <button className="buttonSearch" onClick={getInfo}>Search</button>
         </div>
       </div>
 
@@ -104,11 +108,11 @@ function HaloPlayers() {
           ) : (
             <div className="cardContainer">
 
-              <HaloCardTest />
+              {/* <TestHaloCard /> */}
 
-              {/* {data.map(p => {
+              {data.map(p => {
                 return < HaloPlayerCard key={p.Id} p={p} />
-              })} */}
+              })}
             </div>
           )}
 

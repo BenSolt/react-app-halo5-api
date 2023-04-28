@@ -77,6 +77,7 @@
 
 .tierCardImage {
     width: 80px;
+    border: 2px solid red;
 }
 
 .infoText {
@@ -185,7 +186,7 @@
 
 .textStats {
     color: rgb(210, 210, 210);
-    margin: 4px;
+    margin: 2px;
 }
 
 .textStats2 {
@@ -251,7 +252,7 @@ h6 {
     width: 24px;
     background-color: rgb(64, 64, 64);
     border-radius: 5px;
-}Input
+}
 
 .progressHeadShots {
     margin-top: 5px;

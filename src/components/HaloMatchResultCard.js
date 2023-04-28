@@ -17,13 +17,13 @@ export default function HaloMapCard({ m }) {
     return (
         <div className="matchCardResults">
             <div className={color}>
-                <h4 className='textStats'>{m.TeamId}</h4>
+                <h4 className='textStats'>{m.Rank}</h4>
                 <h4 className='textStats'>{m.Player.Gamertag}</h4>
-                <h4 className='textStats'>K/D Ratio: {KDA}</h4>
-                <h4 className='textStats'>Kills: {m.TotalKills}</h4>
-                <h4 className='textStats'>Assits: {m.TotalAssists}</h4>
-                <h4 className='textStats'>Deaths: {m.TotalDeaths}</h4>
-            </div>
+                <h4 className='textStats'>{KDA}</h4>
+                <h4 className='textStats'>{m.TotalKills}</h4>
+                <h4 className='textStats'>{m.TotalAssists}</h4>
+                <h4 className='textStats'>{m.TotalDeaths}</h4>
+            </div>  
         </div>
     )
 }

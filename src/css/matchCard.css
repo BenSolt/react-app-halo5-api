@@ -12,6 +12,9 @@
     /* margin: 4px; */
     padding: 8px;
 }
+.teamColor {
+    color: '';
+}
 
 .mapImageSection1 {
     width: 50%;
@@ -26,24 +29,27 @@
     width: 50%;
 }
 
-.green {
+.playerStatsBanner {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-color: green;
-}
-
-.red {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: red;
 }
 
 .matchStats {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.matchStatsScore {
+   margin: 12px;
+}
+
+.redText {
+    color: red;
+}
+.blueText {
+    color: blue;
 }
 
 /* HALO MATCH RESULTS STYLING ////////////////////////////////////////// */
@@ -66,7 +72,9 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-color: red;
+    background-color: #282c34;
+    background-image: linear-gradient(to right,rgba(255,0,0,1), rgba(255,0,0,0), rgba(255,0,0,0), rgba(255,0,0,0));
+    border: 1px solid black;
     width: 100%;
 }
 
@@ -74,7 +82,9 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-color: blue;
+    background-color: #282c34;
+    background-image: linear-gradient(to right,rgba(0,0,255,1), rgba(255,0,0,0), rgba(255,0,0,0), rgba(255,0,0,0));
+    border: 1px solid black;
     width: 100%;
 }
 /* ////////////////////////////////////////////////// */

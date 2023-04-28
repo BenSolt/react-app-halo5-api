@@ -297,7 +297,7 @@ function Ranks(props) {
                     } else if (info.Csr.Tier === 5) {
                         return (
                             <div key={info.Csr.Tier}>
-                                <h4 className="textTier" >Gold 5</h4 >
+                                <h4 className="textTier">Gold 5</h4 >
                                 <div className="rankImageContainer">
                                     <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_gold_array05-257a761c7c91418aaa03e2f68e57b117.png" alt="rank images"></img>
                                     <div className="percentileSection">
@@ -310,7 +310,7 @@ function Ranks(props) {
                     } else {
                         return (
                             <div key={info.Csr.Tier}>
-                                <h4 className="textTier" >Gold 6</h4 >
+                                <h4 className="textTier">Gold 6</h4 >
                                 <div className="rankImageContainer">
                                     <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_gold_array06-89344b204245450d815f0e22ec3d4b1e.png" alt="rank images"></img>
                                     <div className="percentileSection">
@@ -491,8 +491,14 @@ function Ranks(props) {
                     if (info.Csr.Tier === 1) {
                         return (
                             <div key={info.Csr.Tier}>
-                                <h4 className="textTier">Onyx</h4>
+                                <h4 className="textTier">Onyx</h4> 
+                                <div className="rankImageContainer">
                                 <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_top_array00-783f32318c8c49eda0365c5daa50f5b6.png" alt="rank images"></img>
+                                <div className="percentileSection">
+                                        <span className='textStats'>CSR Percentile:</span>
+                                        <span className='textStatsBold'>{info.CsrPercentile}%</span>
+                                    </div>
+                            </div>
                             </div>
                         )
                     } else {

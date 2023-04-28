@@ -1,11 +1,29 @@
+import React, { useState } from "react";
+import axiosWithAuth from "../utils/axiosWithAuth";
 import Arr_RankImage from './Arr-RankImage';
 
 function ArenaStats(props) {
 
+    const [data, setData] = useState([]);
+
+    function getInfo() {
+        axiosWithAuth()
+            .get('https://www.haloapi.com/metadata/h5/metadata/playlists')
+            .then(res => {
+                const info = res.data
+                // console.log(info);
+                setData(info);
+            });
+    }
+
 
     return (
         <div>
+            <button onClick={getInfo}>PlayList</button>
             {props.CurrentRank.map(info => {
+
+                const HighestTier = info.Csr.Tier
+                const HighestDesignat = info.Csr.DesignationId
 
                 const TotalKillsPlayer = info.TotalKills
                 const Assists = info.TotalAssists
@@ -29,11 +47,28 @@ function ArenaStats(props) {
                 let hsAccuracy = hsResult.toFixed(1);
 
                 return (
-                    <div key={info}>
+                    <div key={info.PlaylistId}>
                         <div className='statsContainer'>
                             <div className="statsContainerRank">
-                                <h4 className="playlistName">SLAYER</h4>
+                                {/* NEED TO FIX.. displaying 2 icons... */}
+                                {
+                                    data.map(p => {
+                                        if (info.PlaylistId === p?.id) {
+                                            return (
+                                                <div key={p.id}>
+                                                    <h4 className="playlistName">{p?.name}</h4>
+                                                </div>
+                                            )
+                                        }
+                                    })
+                                }
+
+
                                 <Arr_RankImage CurrentRank={props.CurrentRank} />
+
+
+                                <h4 className="textStats">Tier: {HighestTier}</h4>
+                                <h4 className="textStats">DesignationId: {HighestDesignat}</h4>
                             </div>
 
                             <div className="statsSection1">
@@ -85,7 +120,7 @@ function ArenaStats(props) {
                                 </div>
                                 <div className="statsContainerB">
                                     <div className="stat">
-                                        <span className='textStats'>Matches Tied</span><span className='textStatsBold'>{info.TotalGamesTied}</span>
+                                        <span className='textStats'>Games Tied</span><span className='textStatsBold'>{info.TotalGamesTied}</span>
                                     </div>
                                     <div className="stat">
                                         <span className='textStats'>Betrayals</span><span className='textStatsBold'>--?</span>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useSyncExternalStore } from "react";
+import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 import HaloMatchResultCard from "./HaloMatchResultCard";
@@ -8,7 +8,8 @@ import '../css/matchCard.css';
 export default function HaloMapCard({ m }) {
 
     const [dataMap, setDataMap] = useState([]);
-    let color = ""
+    let color = "";
+    let teamColor = "";
 
     const [dataMatch, setDataMatch] = useState([]);
 
@@ -34,13 +35,10 @@ export default function HaloMapCard({ m }) {
             });
     }
 
-
+    // HALO 5 API: MATCH RESULT - CUSTOM ///////////////////////////////////////////
     function getMatchResults() {
         axiosWithAuth()
-            //.get(`https://www.haloapi.com/stats/h5/custom/matches/{matchId}`)
             .get(`https://www.haloapi.com/stats/h5/custom/matches/${m?.Id.MatchId}`)
-
-            //.get(`https://www.haloapi.com/stats/h5/custom/matches/44ada008-a7b8-46d4-b8d5-6ab9b76ca41d`)
             .then(res => {
                 const info = res.data.PlayerStats
                 console.log(info)
@@ -50,6 +48,28 @@ export default function HaloMapCard({ m }) {
             });
     }
 
+
+
+    dataMatch.sort((a, b) => {
+        // sort by team first
+        if (a.TeamId < b.TeamId) {
+            return -1;
+        }
+        if (a.TeamId > b.TeamId) {
+            return 1;
+        }
+
+        // if same team, sort by rank
+        if (a.Rank < b.Rank) {
+            return -1;
+        }
+        if (a.Rank > b.Rank) {
+            return 1;
+        }
+
+        // if everything is equal, return 0
+        return 0;
+    });
 
 
     return (
@@ -84,45 +104,71 @@ export default function HaloMapCard({ m }) {
 
                         return (
                             <div key={i.Player.Gamertag} >
-                                <div className={color}>
+                                <div className="playerStatsBanner">
                                     <h2 className='textStats'>{i.Player.Gamertag}</h2>
-
                                     <h2 className='textStats'>Rank: {i.Rank}th</h2>
                                 </div>
                                 <div className="matchStats">
-                                    <h4 className='textStats'>K/D Ratio: {KDA}</h4>
-                                    <h4 className='textStats'>Kills: {i.TotalKills}</h4>
-                                    <h4 className='textStats'>Assits: {i.TotalAssists}</h4>
-                                    <h4 className='textStats'>Deaths: {i.TotalDeaths}</h4>
+                                    <h4 className='textStats'>K/D Ratio</h4>
+                                    <h4 className='textStats'>Kills</h4>
+                                    <h4 className='textStats'>Assits</h4>
+                                    <h4 className='textStats'>Deaths</h4>
                                 </div>
-                            </div>
-                        )
-                    })}
-                    </div>
-                    {/* TEAMS INFO /////////////////////////// */}
-                    <div>{m.Teams.map(i => {
-                        return (
-                            <div key={i.Id} >
                                 <div className="matchStats">
-                                    <h4 className='textStats'>{i.Rank}</h4>
-                                    <h4 className='textStats'>Score: {i.Score}</h4>
+                                    <h4 className='textStats'>{KDA}</h4>
+                                    <h4 className='textStats'>{i.TotalKills}</h4>
+                                    <h4 className='textStats'>{i.TotalAssists}</h4>
+                                    <h4 className='textStats'>{i.TotalDeaths}</h4>
                                 </div>
                             </div>
                         )
                     })}
                     </div>
+
+
+                    <button onClick={getMatchResults}>Match Results</button>
                 </div>
             </div>
-            <button onClick={getMatchResults}>Match Results</button>
-            <button className='buttonSearch' onClick={getInfoMap}>Search</button>
-            
+
+            {/* TEAMS INFO /////////////////////////// */}
+            <div>
+                <div className="matchCard">{m.Teams.map(i => {
+                    if (i.Rank === 1) {
+                        var a = document.getElementsByClassName('teamColor')
+                        teamColor = 'redText';
+                    } else {
+                        teamColor = 'blueText';
+                    }
+                    return (
+                        <div key={i.Id}>
+                            <div className="matchStatsScore">
+                                {/* <h4 className="textStats">{i.Rank}</h4> */}
+                                <h4 className={teamColor}>{i.Score}</h4>
+                            </div>
+                        </div>
+                    )
+                })}
+                </div>
+            </div>
+            {/* <button className='buttonSearch' onClick={getInfoMap}>Search</button> */}
+
             <div className="matchCard">
                 <div className="matchCardContainer">
+                    <div className="matchStats">
+                        <h4 className='textStats'>Placement</h4>
+                        <h4 className='textStats'>Player Name</h4>
+                        <h4 className='textStats'>K/D Ratio</h4>
+                        <h4 className='textStats'>Kills</h4>
+                        <h4 className='textStats'>Assits</h4>
+                        <h4 className='textStats'>Deaths</h4>
+                    </div>
+                    
                     {dataMatch.map(m => {
                         return <HaloMatchResultCard key={m.Player.Gamertag} m={m} />
                     })}
                 </div>
             </div>
+
         </div>
     )
 }

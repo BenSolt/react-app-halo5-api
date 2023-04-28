@@ -13,9 +13,9 @@ export default function HaloPlayerCard({ p }) {
     //       )
     //  })
 
-    const TotalKillsPlayer = p?.Result?.ArenaStats.TotalKills
-    const Assists = p?.Result?.ArenaStats.TotalAssists
-    const Deaths = p?.Result?.ArenaStats.TotalDeaths
+    const TotalKillsPlayer = p?.Result?.ArenaStats.TotalKills;
+    const Assists = p?.Result?.ArenaStats.TotalAssists;
+    const Deaths = p?.Result?.ArenaStats.TotalDeaths;
 
     const KillsAssits = TotalKillsPlayer + Assists
     const KillDivide = KillsAssits / Deaths * 1
@@ -23,26 +23,38 @@ export default function HaloPlayerCard({ p }) {
 
     // RANK OF PLAYER in ARENA PLAYLIST STATS /////////////////////
     const CurrentRank = p?.Result?.ArenaStats.ArenaPlaylistStats ?
-        p?.Result?.ArenaStats.ArenaPlaylistStats : null
+        p?.Result?.ArenaStats.ArenaPlaylistStats : null;
+
+    // CurrentRank.map(r => {
+    //     return < HaloRankCard key={r.id} r={r} />
+    // })}
 
     const HRankAttainedDesign = p?.Result?.ArenaStats.HighestCsrAttained ?
-        p?.Result?.ArenaStats.HighestCsrAttained.DesignationId : null
+        p?.Result?.ArenaStats.HighestCsrAttained.DesignationId : null;
 
+    // HIGEST CSR STATS ///////////////////////////////////////////////////////////////////////
     const HRankAttainedTier = p?.Result?.ArenaStats.HighestCsrAttained ?
-        p?.Result?.ArenaStats.HighestCsrAttained.Tier : null
+        p?.Result?.ArenaStats.HighestCsrAttained.Tier : null;
 
+    const HighestCsr = p?.Result?.ArenaStats.HighestCsrAttained ?
+    p?.Result?.ArenaStats.HighestCsrAttained.Csr : null;
+
+    const HighestRank = p?.Result?.ArenaStats.HighestCsrAttained ?
+    p?.Result?.ArenaStats.HighestCsrAttained.Rank : null;
+    
+// //////////////////////////////////////////////////////////////////////////////////////////
     const Assasinations = p?.Result?.ArenaStats.TotalAssassinations ?
-        p?.Result?.ArenaStats.TotalAssassinations : null
+        p?.Result?.ArenaStats.TotalAssassinations : null;
 
     const GroundPounds = p?.Result?.ArenaStats.TotalGroundPoundKills ?
-        p?.Result?.ArenaStats.TotalGroundPoundKills : null
+        p?.Result?.ArenaStats.TotalGroundPoundKills : null;
 
     const TotalMeleeKills = p?.Result?.ArenaStats.TotalMeleeKills ?
-        p?.Result?.ArenaStats.TotalMeleeKills : null
+        p?.Result?.ArenaStats.TotalMeleeKills : null;
 
-    const GamesLost = p?.Result?.ArenaStats.TotalGamesLost
-    const GamesWon = p?.Result?.ArenaStats.TotalGamesWon
-    const GamesTied = p?.Result?.ArenaStats.TotalGamesTied
+    const GamesLost = p?.Result?.ArenaStats.TotalGamesLost;
+    const GamesWon = p?.Result?.ArenaStats.TotalGamesWon;
+    const GamesTied = p?.Result?.ArenaStats.TotalGamesTied;
 
     const win = GamesLost / GamesWon * 100;
     let winPercentage = win.toFixed(2);
@@ -60,6 +72,8 @@ export default function HaloPlayerCard({ p }) {
 
     return (
         <div className="playerCardContainer">
+            
+            {/* HIGHEST RANK ACHIEVED //////////////////////////////////////////////////////////// */}
             <div className="cardSection1">
                 <h4 className="peakText">Highest Rank</h4>
                 <div className="peakImage">
@@ -104,9 +118,9 @@ export default function HaloPlayerCard({ p }) {
                         <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/unranked_00-61fca949c33f433ba7e7507d97ff130f.png" alt="rank images"></img>
                     )
                     }
-                    <h4 className="peakText">1653 CSR</h4>
+                    <h4 className="peakText">{HighestCsr} CSR</h4>
+                    <h4 className="peakText">Rank: {HighestRank}</h4>
                 </div>
-                {/* <h4 className="peakText">Highest Desg: 6</h4> */}
             </div>
 
 
@@ -176,7 +190,7 @@ export default function HaloPlayerCard({ p }) {
                             </div>
                             <div className="statsContainerB">
                                 <div className="stat">
-                                    <span className='textStats'>Matches Tied</span><span className='textStatsBold'>{GamesTied}</span>
+                                    <span className='textStats'>Games Tied</span><span className='textStatsBold'>{GamesTied}</span>
                                 </div>
                                 <div className="stat">
                                     <span className='textStats'>Melee Kills</span><span className='textStatsBold'>{TotalMeleeKills}</span>
@@ -240,7 +254,9 @@ export default function HaloPlayerCard({ p }) {
                 <h6>Total kills Vehic:{TotalKillsV}</h6> */}
 
                     <h3 className="peakText">CURRENT ARENA PLAYLIST STATS</h3>
+          
                     <Arr_ArenaStats CurrentRank={CurrentRank} />
+                    {/* with Joinedcrayon323 coming back with error.. duplicates and [object object] WHY?*/}
                 </div>
             </div>
         </div>
