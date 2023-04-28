@@ -58,10 +58,48 @@ function ArenaStats(props) {
                 const hsResult = totalHeadshots / TotalKillsPlayer * 100;
                 let hsAccuracy = hsResult.toFixed(1);
 
+
+                const textRank = dataRank.map(r => {
+                    return (
+                        <div key={r.id}>
+                            {info.Csr.DesignationId === Number(r?.id) ? (
+                                <div  className="rankImageContainer_B"> 
+                                    <h3 className="textTier">{r.name}</h3>
+                                </div>
+                            ) : null}
+                        </div>
+                    )
+                })
+
+
+                const imageRank = dataRank.map(r => {
+                    return (
+                        <div key={r.id}>
+                            {info.Csr.DesignationId === Number(r?.id) ? (
+                                <div>
+                                    {r?.tiers?.map(t => {
+                                        return (
+                                            <div key={t.id}>
+                                                {info.Csr.Tier === Number(t?.id) ? (
+                                                    <div>
+                                                        <img className="tierCardImage" src={t.iconImageUrl} alt="rank images" />
+                                                    </div>
+                                                ) : null}
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            ) : null}
+                        </div>
+                    )
+                })
+
+
+
                 return (
                     <div key={info.PlaylistId}>
                         <div className='statsContainer'>
-                            <div className="statsContainerRank">
+                            <div className="statsContainerRanks">
                                 {
                                     data.map(p => {
                                         if (info.PlaylistId === p?.id) {
@@ -73,64 +111,35 @@ function ArenaStats(props) {
                                         }
                                     })
                                 }
-                                {/* joinedcrayon323 */}
 
-                                {dataRank.map(r => {
-                                    return (
-                                        <div key={r.id}>
-                                            {/* {info.Csr.DesignationId === Number(r?.id) ? (<h4 className="title">DIAMOND TEST1</h4>) : null} */}
-
-                                            {info.Csr.DesignationId === Number(r?.id) ? (
-                                                <div>
-                                                    <h4 className="textTier">{r.name}</h4>
-
-                                                    {r?.tiers?.map(t => {
-                                                        return (
-                                                            <div key={t.id} className="rankImageContainer">
-                                                                {info.Csr.Tier === Number(t?.id) ? (
-                                                                    <div>
-                                                                        <img className="tierCardImage" src={t.iconImageUrl} alt="rank images" />
-                                                                    </div>
-                                                                ) : null}
+                                <div className="rankImageContainer">
+                                    {/* // RANKED STATS AND IMAGE //////////////////////////////////////////////////////////////// */}
+                                    {props.CurrentRank === undefined || props.CurrentRank.length === 0 ? (<div><h4 className="textStats2">NO Data Available</h4></div>) : (<div></div>)}
+                                    {props.CurrentRank.map(info => {
+                                        if (info.Csr.DesignationId === HighestDesignat) {
+                                            if (info.Csr.Tier === HighestTier) {
+                                                return (
+                                                    <div key={info.Csr.Tier} >
+                                                        {textRank}
+                                                        <div className="rankImageContainer_B">
+                                                            {imageRank}
+                                                            <div className="percentileSection">
+                                                                <span className='textStats'>CSR Percentile:</span>
+                                                                <span className='textStatsBold'>{info.CsrPercentile}%</span>
                                                             </div>
-                                                        )
-                                                    })}
-                                                </div>
-
-                                            ) : null}
-                                        </div>
-                                    )
-                                })}
-
-                                {props.CurrentRank === undefined || props.CurrentRank.length === 0 ? (<div><h4 className="textStats2">NO Data Available</h4></div>) : (<div></div>)}
-                                {props.CurrentRank.map(info => {
-
-                                    // RANKED STATS AND IMAGE ////////////////////////////////////////////////////////////////
-                                    if (info.Csr.DesignationId === HighestDesignat) {
-                                        if (info.Csr.Tier === HighestTier) {
-                                            return (
-                                                <div key={info.Csr.Tier}>
-                                                    <div className="rankImageContainer">
-                                                        {/* <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_diamond_array01-9721d95b267942dcb1edcce6dfc25631.png" alt="rank images"></img> */}
-                                                        <div className="percentileSection">
-                                                            <span className='textStats'>CSR Percentile:</span>
-                                                            <span className='textStatsBold'>{info.CsrPercentile}%</span>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            )
-                                        } else {
-                                            return (<div></div>)
+                                                )
+                                            } else {
+                                                return (<div></div>)
+                                            }
                                         }
-                                    }
-                                })}
-
-                                <h4 className="textStats">Tier: {HighestTier}</h4>
-                                <h4 className="textStats">DesignationId: {HighestDesignat}</h4>
+                                    })}
+                                </div>
                             </div>
 
                             <div className="statsSection1">
-                                <div className="statsContainerB">
+                                <div className="statsContainer_B">
                                     <div className="statMain">
                                         <span className='textStats'>KDA Ratio</span><span className='textStatsBold'>{KDA}</span>
                                     </div>
@@ -138,7 +147,7 @@ function ArenaStats(props) {
                                         <span className='textStats'>Win %</span><span className='textStatsBold'>{winPercentage}%</span>
                                     </div>
                                 </div>
-                                <div className="statsContainerB">
+                                <div className="statsContainer_B">
                                     <div className="statMain">
                                         <span className='textStats'>Average KDA</span><span className='textStatsBold'>--</span>
                                     </div>
@@ -149,7 +158,7 @@ function ArenaStats(props) {
                             </div>
 
                             <div className="statsSection1">
-                                <div className="statsContainerB">
+                                <div className="statsContainer_B">
                                     <div className="stat">
                                         <span className='textStats'>Total Kills</span><span className='textStatsBold'>{TotalKillsPlayer}</span>
                                     </div>
@@ -157,7 +166,7 @@ function ArenaStats(props) {
                                         <span className='textStats'>Assists</span><span className='textStatsBold'>{Assists}</span>
                                     </div>
                                 </div>
-                                <div className="statsContainerB">
+                                <div className="statsContainer_B">
                                     <div className="stat">
                                         <span className='textStats'>Deaths</span><span className='textStatsBold'>{Deaths}</span>
                                     </div>
@@ -168,7 +177,7 @@ function ArenaStats(props) {
                             </div>
 
                             <div className="statsSection1">
-                                <div className="statsContainerB">
+                                <div className="statsContainer_B">
                                     <div className="stat">
                                         <span className='textStats'>Games Won</span><span className='textStatsBold'>{info.TotalGamesWon}</span>
                                     </div>
@@ -176,7 +185,7 @@ function ArenaStats(props) {
                                         <span className='textStats'>Games Lost</span><span className='textStatsBold'>{info.TotalGamesLost}</span>
                                     </div>
                                 </div>
-                                <div className="statsContainerB">
+                                <div className="statsContainer_B">
                                     <div className="stat">
                                         <span className='textStats'>Games Tied</span><span className='textStatsBold'>{info.TotalGamesTied}</span>
                                     </div>
@@ -184,7 +193,7 @@ function ArenaStats(props) {
                                         <span className='textStats'>Betrayals</span><span className='textStatsBold'>--?</span>
                                     </div>
                                 </div>
-                                <div className="statsContainerB">
+                                <div className="statsContainer_B">
                                     <div className="stat">
                                         <span className='textStats'>Assasinations</span><span className='textStatsBold'>{info.TotalAssassinations}</span>
                                     </div>

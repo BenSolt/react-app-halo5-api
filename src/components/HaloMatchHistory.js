@@ -21,6 +21,7 @@ function HaloPlaylists() {
         if (isLoading) return
     }, [isLoading])
 
+    // HALO 5 API: Player Match History //////////////////////////////////////////////////
     function getInfoMatch() {
         axiosWithAuth()
             // .get('https://www.haloapi.com/stats/h5/players/{player}/matches[?modes][&start][&count][&include-times]')
@@ -53,8 +54,6 @@ function HaloPlaylists() {
                             placeholder="Enter Xbox Live Username"
                             autoComplete="off"
                         />
-                        {/* Make Input for Count: retrieve last ___ # of games played */}
-
                         <button className='buttonSearch' onClick={getInfoMatch}>Search</button>
                     </div>
                 </div>

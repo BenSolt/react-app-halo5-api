@@ -63,9 +63,10 @@ function HaloPlayers() {
     setIsSearching(true);
   };
 
-
+// HALO 5 API: Player Service Records - Arena ///////////////////////////////////////////
   function getInfo() {
     axiosWithAuth()
+      //https://www.haloapi.com/stats/h5/servicerecords/arena?players={players}[&seasonId]
       .get(`https://www.haloapi.com/stats/h5/servicerecords/arena?players=${query}`)
       .then(res => {
         const info = res.data.Results;

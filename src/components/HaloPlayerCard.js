@@ -133,7 +133,7 @@ export default function HaloPlayerCard({ p }) {
                     <h3 className="peakText">TOTAL STATS</h3>
                     <div className='statsContainer'>
                         <div className="statsSection1">
-                            <div className="statsContainerB">
+                            <div className="statsContainer_B">
                                 <div className="statMain">
                                     <span className='textStats'>KDA Ratio</span><span className='textStatsBold'>{KDA}</span>
                                 </div>
@@ -141,7 +141,7 @@ export default function HaloPlayerCard({ p }) {
                                     <span className='textStats'>Win %</span><span className='textStatsBold'>{winPercentage}</span>
                                 </div>
                             </div>
-                            <div className="statsContainerB">
+                            <div className="statsContainer_B">
                                 <div className="statMain">
                                     <span className='textStats'>Average KDA</span><span className='textStatsBold'>--</span>
                                 </div>
@@ -152,7 +152,7 @@ export default function HaloPlayerCard({ p }) {
                         </div>
 
                         <div className="statsSection1">
-                            <div className="statsContainerB">
+                            <div className="statsContainer_B">
                                 <div className="stat">
                                     <span className='textStats'>Total Kills</span><span className='textStatsBold'>{TotalKillsPlayer}</span>
                                 </div>
@@ -160,7 +160,7 @@ export default function HaloPlayerCard({ p }) {
                                     <span className='textStats'>Assists</span><span className='textStatsBold'>{Assists}</span>
                                 </div>
                             </div>
-                            <div className="statsContainerB">
+                            <div className="statsContainer_B">
                                 <div className="stat">
                                     <span className='textStats'>Deaths</span><span className='textStatsBold'>{Deaths}</span>
                                 </div>
@@ -168,7 +168,7 @@ export default function HaloPlayerCard({ p }) {
                                     <span className='textStats'>Head Shots</span><span className='textStatsBold'>{totalHeadShots}</span>
                                 </div>
                             </div>
-                            <div className="statsContainerB">
+                            <div className="statsContainer_B">
                                 <div className="stat">
                                     <span className='textStats'>Damage Taken</span><span className='textStatsBold'>--</span>
                                 </div>
@@ -179,7 +179,7 @@ export default function HaloPlayerCard({ p }) {
                         </div>
 
                         <div className="statsSection1">
-                            <div className="statsContainerB">
+                            <div className="statsContainer_B">
                                 <div className="stat">
                                     <span className='textStats'>Games Won</span><span className='textStatsBold'>{GamesWon}</span>
                                 </div>
@@ -187,7 +187,7 @@ export default function HaloPlayerCard({ p }) {
                                     <span className='textStats'>Games Lost</span><span className='textStatsBold'>{GamesLost}</span>
                                 </div>
                             </div>
-                            <div className="statsContainerB">
+                            <div className="statsContainer_B">
                                 <div className="stat">
                                     <span className='textStats'>Games Tied</span><span className='textStatsBold'>{GamesTied}</span>
                                 </div>
@@ -195,7 +195,7 @@ export default function HaloPlayerCard({ p }) {
                                     <span className='textStats'>Melee Kills</span><span className='textStatsBold'>{TotalMeleeKills}</span>
                                 </div>
                             </div>
-                            <div className="statsContainerB">
+                            <div className="statsContainer_B">
                                 <div className="stat">
                                     <span className='textStats'>Assasinations</span><span className='textStatsBold'>{Assasinations}</span>
                                 </div>
