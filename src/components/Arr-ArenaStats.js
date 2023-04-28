@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
-import Arr_RankImage from './Arr-RankImage';
 
 function ArenaStats(props) {
 
     const [data, setData] = useState([]);
+    const [dataRank, setDataRank] = useState([]);
 
-    function getInfo() {
+    function getPlaylist() {
         axiosWithAuth()
             .get('https://www.haloapi.com/metadata/h5/metadata/playlists')
             .then(res => {
@@ -16,10 +16,22 @@ function ArenaStats(props) {
             });
     }
 
+    function getImageRank() {
+        axiosWithAuth()
+            .get('https://www.haloapi.com/metadata/h5/metadata/csr-designations')
+            .then(res => {
+                const info = res.data
+                // console.log(info);
+                setDataRank(info);
+            });
+    }
+
 
     return (
         <div>
-            <button onClick={getInfo}>PlayList</button>
+            <button onClick={getPlaylist}>PlayList</button>
+            <button onClick={getImageRank}>Rank</button>
+
             {props.CurrentRank.map(info => {
 
                 const HighestTier = info.Csr.Tier
@@ -50,7 +62,6 @@ function ArenaStats(props) {
                     <div key={info.PlaylistId}>
                         <div className='statsContainer'>
                             <div className="statsContainerRank">
-                                {/* NEED TO FIX.. displaying 2 icons... */}
                                 {
                                     data.map(p => {
                                         if (info.PlaylistId === p?.id) {
@@ -62,10 +73,57 @@ function ArenaStats(props) {
                                         }
                                     })
                                 }
+                                {/* joinedcrayon323 */}
 
+                                {dataRank.map(r => {
+                                    return (
+                                        <div key={r.id}>
+                                            {/* {info.Csr.DesignationId === Number(r?.id) ? (<h4 className="title">DIAMOND TEST1</h4>) : null} */}
 
-                                <Arr_RankImage CurrentRank={props.CurrentRank} />
+                                            {info.Csr.DesignationId === Number(r?.id) ? (
+                                                <div>
+                                                    <h4 className="textTier">{r.name}</h4>
 
+                                                    {r?.tiers?.map(t => {
+                                                        return (
+                                                            <div key={t.id} className="rankImageContainer">
+                                                                {info.Csr.Tier === Number(t?.id) ? (
+                                                                    <div>
+                                                                        <img className="tierCardImage" src={t.iconImageUrl} alt="rank images" />
+                                                                    </div>
+                                                                ) : null}
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+
+                                            ) : null}
+                                        </div>
+                                    )
+                                })}
+
+                                {props.CurrentRank === undefined || props.CurrentRank.length === 0 ? (<div><h4 className="textStats2">NO Data Available</h4></div>) : (<div></div>)}
+                                {props.CurrentRank.map(info => {
+
+                                    // RANKED STATS AND IMAGE ////////////////////////////////////////////////////////////////
+                                    if (info.Csr.DesignationId === HighestDesignat) {
+                                        if (info.Csr.Tier === HighestTier) {
+                                            return (
+                                                <div key={info.Csr.Tier}>
+                                                    <div className="rankImageContainer">
+                                                        {/* <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_diamond_array01-9721d95b267942dcb1edcce6dfc25631.png" alt="rank images"></img> */}
+                                                        <div className="percentileSection">
+                                                            <span className='textStats'>CSR Percentile:</span>
+                                                            <span className='textStatsBold'>{info.CsrPercentile}%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        } else {
+                                            return (<div></div>)
+                                        }
+                                    }
+                                })}
 
                                 <h4 className="textStats">Tier: {HighestTier}</h4>
                                 <h4 className="textStats">DesignationId: {HighestDesignat}</h4>

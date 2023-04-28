@@ -166,7 +166,7 @@
     flex-direction: column;
     border-radius: 5px;
     width: 48%;
-    margin: 0 5px;
+    margin: 0 2px;
 }
 
 .stat:hover {
@@ -341,7 +341,7 @@ h6 {
         flex-direction: column;
         border-radius: 5px;
         width: 90%;
-        margin: 4px 5px;
+        margin: 0 2px;
     }
 
     .statsContainer2 {

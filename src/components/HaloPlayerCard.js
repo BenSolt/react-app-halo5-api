@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Arr_RankImage from './Arr-RankImage';
 import Arr_ArenaStats from './Arr-ArenaStats';
 
 import '../css/playerCard.css';
