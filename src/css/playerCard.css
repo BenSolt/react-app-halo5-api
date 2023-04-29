@@ -4,31 +4,17 @@
 
 .playlistName {
     text-align: left;
-    margin-left: 1%;
+    margin-left: 2%;
+    padding-top: 8px;
     color: white;
     text-decoration: underline 2px;
 }
 
-.cardSection1 {
-    background-color: rgb(64, 64, 64);
-    border-radius: 8px;
-    width: 30%;
-    height: 180px;
-    margin: 0 1%;
-}
 
 .cardSection2 {
     /* background-color: rgb(64, 64, 64); */
     width: 80%;
     margin: 0 1%;
-}
-
-.peakImage {
-    padding: 0 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-between;
 }
 
 /* .cardPlayer {
@@ -56,7 +42,7 @@
     padding: 0 5%;
 }
 
-.peakText {
+.textTitle {
     color: white;
     padding: 0 10%;
 }
@@ -105,7 +91,6 @@
 
 .tierCardImage {
     width: 80px;
-    
 }
 
 .percentileSection {
@@ -116,14 +101,15 @@
 
 /* // 4 Box Items at top.//////////////////////////////////////////////////////// */
 
-.statsSection1 {
+.statsContainer_B {
     display: flex;
     justify-content: space-evenly;
     padding: 4px 0;
 }
 
-.statsContainer_B {
+.statsContainer_C {
     display: flex;
+    justify-content: space-evenly;
     width: 50%;
     height: 80px;
 }
@@ -133,8 +119,7 @@
     flex-direction: column;
     background-color: rgb(84, 84, 84);
     border-radius: 5px;
-    width: 48%;
-    padding: 3px 0;
+    width: 46%;
     margin: 0 4px;
 }
 
@@ -171,8 +156,8 @@
     display: flex;
     flex-direction: column;
     border-radius: 5px;
-    width: 48%;
-    margin: 0 2px;
+    width: 46%;
+    margin: 0 4px;
 }
 
 .stat:hover {
@@ -298,13 +283,7 @@ h6 {
         margin: 0 1%;
     }
 
-    .peakImage {
-        padding: 0 10%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        justify-content: space-between;
-    }
+
 
     .cardPlayer {
         width: 90%;
@@ -321,7 +300,7 @@ h6 {
         align-items: center;
     }
 
-    .statsContainerB {
+    .statsContainer_B {
         display: flex;
         width: 90%;
         height: 80px;
@@ -341,7 +320,7 @@ h6 {
         flex-direction: column;
         border-radius: 5px;
         width: 90%;
-        margin: 0 2px;
+        margin: 4px;
     }
 
     .statsContainer2 {
@@ -360,7 +339,7 @@ h6 {
         width: 90%;
         margin: 5px;
         background-color: rgb(84, 84, 84);
-        padding: 10px;
+        padding: 5px;
     }
 
     /*////////////////// SEARCH BAR ///////////////////////////////////////*/

@@ -12,6 +12,7 @@ export default function HaloMapCard({ m }) {
     let teamColor = "";
 
     const [dataMatch, setDataMatch] = useState([]);
+    const [showbar, setShowBar] = useState(false);
 
     // useEffect(() => {
     //     axiosWithAuth()
@@ -41,23 +42,30 @@ export default function HaloMapCard({ m }) {
             .get(`https://www.haloapi.com/stats/h5/custom/matches/${m?.Id.MatchId}`)
             .then(res => {
                 const info = res.data.PlayerStats
-                console.log(info)
+                // console.log(info)
                 setDataMatch(info);
                 // setIsLoading(false);
                 // setIsSearching(true);
             });
+        setShowBar(true)
     }
 
-
+    
 
     dataMatch.sort((a, b) => {
         // sort by team first
-        if (a.TeamId < b.TeamId) {
+        if (b.GameEndStatus< a.GameEndStatus) {
             return -1;
         }
-        if (a.TeamId > b.TeamId) {
+        if (a.GameEndStatus > b.GameEndStatus) {
             return 1;
         }
+        // if (b.TeamId < a.TeamId) {
+        //     return -1;
+        // }
+        //     //if (a.TeamId < b.TeamId) {
+        //         return -1;
+        //     }
 
         // if same team, sort by rank
         if (a.Rank < b.Rank) {
@@ -74,7 +82,7 @@ export default function HaloMapCard({ m }) {
 
     return (
         <div >
-            <div className="matchCard">
+            <div className="sectionMatchCardPlayer">
                 <div className="mapImageSection1">
                     {dataMap.map(a => {
                         if (m?.MapId === a.id) {
@@ -106,7 +114,7 @@ export default function HaloMapCard({ m }) {
                             <div key={i.Player.Gamertag} >
                                 <div className="playerStatsBanner">
                                     <h2 className='textStats'>{i.Player.Gamertag}</h2>
-                                    <h2 className='textStats'>Rank: {i.Rank}th</h2>
+                                    <h2 className='textStats'>Rank: {i.Rank}</h2>
                                 </div>
                                 <div className="matchStats">
                                     <h4 className='textStats'>K/D Ratio</h4>
@@ -130,18 +138,18 @@ export default function HaloMapCard({ m }) {
                 </div>
             </div>
 
-            {/* TEAMS INFO /////////////////////////// */}
+            {/* TEAMS INFO: PLACED 1st or 2nd /////////////////////////// */}
             <div>
-                <div className="matchCard">{m.Teams.map(i => {
-                    if (i.Rank === 1) {
-                        var a = document.getElementsByClassName('teamColor')
+        
+                <div className="sectionMatchCard2">{m.Teams.map(i => {
+                    if (i.Id === 0) {
                         teamColor = 'redText';
                     } else {
                         teamColor = 'blueText';
                     }
                     return (
-                        <div key={i.Id}>
-                            <div className="matchStatsScore">
+                        <div key={i.Id} className="matchStatsScore">
+                            <div className="test">
                                 {/* <h4 className="textStats">{i.Rank}</h4> */}
                                 <h4 className={teamColor}>{i.Score}</h4>
                             </div>
@@ -152,17 +160,24 @@ export default function HaloMapCard({ m }) {
             </div>
             {/* <button className='buttonSearch' onClick={getInfoMap}>Search</button> */}
 
-            <div className="matchCard">
+            <div className="sectionMatchCard">
                 <div className="matchCardContainer">
-                    <div className="matchStats">
-                        <h4 className='textStats'>Placement</h4>
+
+                    <div className="matchCardContainer_Titles">
+                    {showbar && <div className="matchStatsResults">
+                        <h4 className='textStats'>Rank</h4>
                         <h4 className='textStats'>Player Name</h4>
                         <h4 className='textStats'>K/D Ratio</h4>
+                    </div>}
+
+                    {showbar && <div className="matchStatsResults2">
                         <h4 className='textStats'>Kills</h4>
                         <h4 className='textStats'>Assits</h4>
                         <h4 className='textStats'>Deaths</h4>
+                    </div>}
                     </div>
-                    
+
+
                     {dataMatch.map(m => {
                         return <HaloMatchResultCard key={m.Player.Gamertag} m={m} />
                     })}

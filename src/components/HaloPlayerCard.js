@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Arr_ArenaStats from './Arr-ArenaStats';
+import HighestRankContainer from "./pieces/highestRankContainer";
 
 import '../css/playerCard.css';
 
@@ -31,22 +32,27 @@ export default function HaloPlayerCard({ p }) {
     const HRankAttainedDesign = p?.Result?.ArenaStats.HighestCsrAttained ?
         p?.Result?.ArenaStats.HighestCsrAttained.DesignationId : null;
 
+
+
     // HIGEST CSR STATS ///////////////////////////////////////////////////////////////////////
     const HRankAttainedTier = p?.Result?.ArenaStats.HighestCsrAttained ?
         p?.Result?.ArenaStats.HighestCsrAttained.Tier : null;
 
     const HighestCsr = p?.Result?.ArenaStats.HighestCsrAttained ?
-    p?.Result?.ArenaStats.HighestCsrAttained.Csr : null;
+        p?.Result?.ArenaStats.HighestCsrAttained.Csr : null;
 
     const HighestRank = p?.Result?.ArenaStats.HighestCsrAttained ?
-    p?.Result?.ArenaStats.HighestCsrAttained.Rank : null;
-    
-// //////////////////////////////////////////////////////////////////////////////////////////
+        p?.Result?.ArenaStats.HighestCsrAttained.Rank : null;
+
+    // //////////////////////////////////////////////////////////////////////////////////////////
     const Assasinations = p?.Result?.ArenaStats.TotalAssassinations ?
         p?.Result?.ArenaStats.TotalAssassinations : null;
 
     const GroundPounds = p?.Result?.ArenaStats.TotalGroundPoundKills ?
         p?.Result?.ArenaStats.TotalGroundPoundKills : null;
+
+    const ShoulderBash = p?.Result?.ArenaStats.TotalShoulderBashKills ?
+        p?.Result?.ArenaStats.TotalShoulderBashKills : null;
 
     const TotalMeleeKills = p?.Result?.ArenaStats.TotalMeleeKills ?
         p?.Result?.ArenaStats.TotalMeleeKills : null;
@@ -55,7 +61,10 @@ export default function HaloPlayerCard({ p }) {
     const GamesWon = p?.Result?.ArenaStats.TotalGamesWon;
     const GamesTied = p?.Result?.ArenaStats.TotalGamesTied;
 
-    const win = GamesLost / GamesWon * 100;
+    const TotalGames = p?.Result?.ArenaStats.TotalGamesCompleted;
+
+    // wins divided by total games..
+    const win = GamesWon / TotalGames * 100;
     let winPercentage = win.toFixed(2);
 
     const totalHeadShots = p?.Result?.ArenaStats.TotalHeadshots
@@ -71,57 +80,10 @@ export default function HaloPlayerCard({ p }) {
 
     return (
         <div className="playerCardContainer">
-            
+
             {/* HIGHEST RANK ACHIEVED //////////////////////////////////////////////////////////// */}
-            <div className="cardSection1">
-                <h4 className="peakText">Highest Rank</h4>
-                <div className="peakImage">
-                    {HRankAttainedDesign === null ? (
-                        // UNRANKED ////////////////
-                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/unranked_00-61fca949c33f433ba7e7507d97ff130f.png" alt="rank images"></img>
-
-                    ) : HRankAttainedDesign === 1 ? (
-                        // BRONZE TIER 1
-                        <img class="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_bronze_array01-c68c7e495d124eba8343c0874d74cd36.png" alt="rank images"></img>
-
-                    ) : HRankAttainedDesign === 2 ? (
-                        // SILVER TIER 1//////////////////
-                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_silver_array01-b4739333586340bda2eed6099e630f92.png" alt="rank images"></img>
-
-                    ) : HRankAttainedDesign === 3 ? (
-                        // GOLD TIER 1//////////////////
-                        <img class="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_gold_array01-5053cd291bb74d6a852f0cb90a62195e.png" alt="rank images"></img>
-
-                    ) : HRankAttainedDesign === 4 ? (
-                        // PLATINUM TIER 1////////////////
-                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_platinum_array01-c8df3dc366ea49209762f9b08189ffa6.png" alt="rank images"></img>
-
-                    ) : HRankAttainedDesign === 5 && HRankAttainedTier === 3 ? (
-
-                        // DIAMOND 1//////////////////
-                        // 
-
-                        // DIAMOND 3//////////////////
-                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_diamond_array03-b740122fc19c4e829bb8c8fda023a1f9.png" alt="rank images"></img>
-
-                    ) : HRankAttainedDesign === 6 ? (
-                        // ONYX ////////////////
-                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_top_array00-783f32318c8c49eda0365c5daa50f5b6.png" alt="rank images"></img>
-
-                    ) : HRankAttainedDesign === 7 ? (
-                        // CHAMPION ////////////////
-                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/csr_top_array01-3755e5127c9c46368e648d58da44390e.png" alt="rank images"></img>
-
-                    ) : (
-                        // UNRANKED AGAIN.. NEED CHANGE //////////
-                        <img className="tierCardImage" src="https://content.halocdn.com/media/Default/games/halo-5-guardians/csr/unranked_00-61fca949c33f433ba7e7507d97ff130f.png" alt="rank images"></img>
-                    )
-                    }
-                    <h4 className="peakText">{HighestCsr} CSR</h4>
-                    <h4 className="peakText">Rank: {HighestRank}</h4>
-                </div>
-            </div>
-
+            <HighestRankContainer CurrentRank={CurrentRank} HRankAttainedDesign={HRankAttainedDesign} HighestCsr={HighestCsr}
+                HighestRank={HighestRank} HRankAttainedTier={HRankAttainedTier} />
 
             <div className="cardSection2">
                 <div>
@@ -130,10 +92,10 @@ export default function HaloPlayerCard({ p }) {
                         <h4 className="rankText"> Rank: {p?.Result?.SpartanRank}</h4>
                     </div>
 
-                    <h3 className="peakText">TOTAL STATS</h3>
+                    <h3 className="textTitle">TOTAL STATS</h3>
                     <div className='statsContainer'>
-                        <div className="statsSection1">
-                            <div className="statsContainer_B">
+                        <div className="statsContainer_B">
+                            <div className="statsContainer_C">
                                 <div className="statMain">
                                     <span className='textStats'>KDA Ratio</span><span className='textStatsBold'>{KDA}</span>
                                 </div>
@@ -141,7 +103,7 @@ export default function HaloPlayerCard({ p }) {
                                     <span className='textStats'>Win %</span><span className='textStatsBold'>{winPercentage}</span>
                                 </div>
                             </div>
-                            <div className="statsContainer_B">
+                            <div className="statsContainer_C">
                                 <div className="statMain">
                                     <span className='textStats'>Average KDA</span><span className='textStatsBold'>--</span>
                                 </div>
@@ -151,8 +113,8 @@ export default function HaloPlayerCard({ p }) {
                             </div>
                         </div>
 
-                        <div className="statsSection1">
-                            <div className="statsContainer_B">
+                        <div className="statsContainer_B">
+                            <div className="statsContainer_C">
                                 <div className="stat">
                                     <span className='textStats'>Total Kills</span><span className='textStatsBold'>{TotalKillsPlayer}</span>
                                 </div>
@@ -160,7 +122,7 @@ export default function HaloPlayerCard({ p }) {
                                     <span className='textStats'>Assists</span><span className='textStatsBold'>{Assists}</span>
                                 </div>
                             </div>
-                            <div className="statsContainer_B">
+                            <div className="statsContainer_C">
                                 <div className="stat">
                                     <span className='textStats'>Deaths</span><span className='textStatsBold'>{Deaths}</span>
                                 </div>
@@ -168,18 +130,18 @@ export default function HaloPlayerCard({ p }) {
                                     <span className='textStats'>Head Shots</span><span className='textStatsBold'>{totalHeadShots}</span>
                                 </div>
                             </div>
-                            <div className="statsContainer_B">
+                            {/* <div className="statsContainer_C">
                                 <div className="stat">
                                     <span className='textStats'>Damage Taken</span><span className='textStatsBold'>--</span>
                                 </div>
                                 <div className="stat">
                                     <span className='textStats'>Damage Dealt</span><span className='textStatsBold'>--</span>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
 
-                        <div className="statsSection1">
-                            <div className="statsContainer_B">
+                        <div className="statsContainer_B">
+                            <div className="statsContainer_C">
                                 <div className="stat">
                                     <span className='textStats'>Games Won</span><span className='textStatsBold'>{GamesWon}</span>
                                 </div>
@@ -187,7 +149,7 @@ export default function HaloPlayerCard({ p }) {
                                     <span className='textStats'>Games Lost</span><span className='textStatsBold'>{GamesLost}</span>
                                 </div>
                             </div>
-                            <div className="statsContainer_B">
+                            <div className="statsContainer_C">
                                 <div className="stat">
                                     <span className='textStats'>Games Tied</span><span className='textStatsBold'>{GamesTied}</span>
                                 </div>
@@ -195,9 +157,20 @@ export default function HaloPlayerCard({ p }) {
                                     <span className='textStats'>Melee Kills</span><span className='textStatsBold'>{TotalMeleeKills}</span>
                                 </div>
                             </div>
-                            <div className="statsContainer_B">
+                        </div>
+
+                        <div className="statsContainer_B">
+                            <div className="statsContainer_C">
                                 <div className="stat">
                                     <span className='textStats'>Assasinations</span><span className='textStatsBold'>{Assasinations}</span>
+                                </div>
+                                <div className="stat">
+                                    <span className='textStats'>Shoulder Bash</span><span className='textStatsBold'>{ShoulderBash}</span>
+                                </div>
+                            </div>
+                            <div className="statsContainer_C">
+                                <div className="stat">
+                                    <span className='textStats'>---</span><span className='textStatsBold'>--</span>
                                 </div>
                                 <div className="stat">
                                     <span className='textStats'>Ground Pounds</span><span className='textStatsBold'>{GroundPounds}</span>
@@ -252,10 +225,9 @@ export default function HaloPlayerCard({ p }) {
                 <h6 className='textStats'>Assasinations: 2711</h6>
                 <h6>Total kills Vehic:{TotalKillsV}</h6> */}
 
-                    <h3 className="peakText">CURRENT ARENA PLAYLIST STATS</h3>
-          
+                    <h3 className="textTitle">CURRENT ARENA PLAYLIST STATS</h3>
+
                     <Arr_ArenaStats CurrentRank={CurrentRank} />
-                    {/* with Joinedcrayon323 coming back with error.. duplicates and [object object] WHY?*/}
                 </div>
             </div>
         </div>

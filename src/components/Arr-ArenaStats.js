@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 function ArenaStats(props) {
@@ -6,46 +6,54 @@ function ArenaStats(props) {
     const [data, setData] = useState([]);
     const [dataRank, setDataRank] = useState([]);
 
-    function getPlaylist() {
-        axiosWithAuth()
-            .get('https://www.haloapi.com/metadata/h5/metadata/playlists')
-            .then(res => {
-                const info = res.data
-                // console.log(info);
-                setData(info);
-            });
-    }
+    // useEffect(() => {
+    //     axiosWithAuth()
+    //         .get('https://www.haloapi.com/metadata/h5/metadata/playlists')
+    //         .then(res => {
+    //             const info = res.data
+    //             // console.log(info);
+    //             setData(info);
+    //         });
+    // }, []);
 
-    function getImageRank() {
-        axiosWithAuth()
-            .get('https://www.haloapi.com/metadata/h5/metadata/csr-designations')
-            .then(res => {
-                const info = res.data
-                // console.log(info);
-                setDataRank(info);
-            });
-    }
+
+    // useEffect(() => {
+        // axiosWithAuth()
+        //     .get('https://www.haloapi.com/metadata/h5/metadata/csr-designations')
+        //     .then(res => {
+        //         const info = res.data
+        //         // console.log(info);
+        //         setDataRank(info);
+        //     });
+    // }, []);
+
 
 
     return (
         <div>
-            <button onClick={getPlaylist}>PlayList</button>
-            <button onClick={getImageRank}>Rank</button>
-
+            {/* <button onClick={getPlaylist}>PlayList</button> */}
             {props.CurrentRank.map(info => {
 
-                const HighestTier = info.Csr.Tier
-                const HighestDesignat = info.Csr.DesignationId
+                // {props.CurrentRank === undefined || props.CurrentRank.length === 0 ? (<div><h4 className="textStats2">NO Data Available</h4></div>) : (<div></div>)}
+                // {props.CurrentRank.map(info => {
+
+                const HighestCsrTier = info?.Csr ? info?.Csr : null
+                //HighestCsrTier === undefined ? (<div><h4 className="textStats2">NO Data Available</h4></div>) : (<div></div>)
+                const HighestTier = info?.Csr?.Tier ? info?.Csr?.Tier : null
+                const HighestDesignation = info?.Csr?.DesignationId ? info?.Csr?.DesignationId : null
+
 
                 const TotalKillsPlayer = info.TotalKills
                 const Assists = info.TotalAssists
                 const Deaths = info.TotalDeaths
 
+                const TotalGames = info.TotalGamesCompleted
+
                 const KillsAssits = info.TotalKills + info.TotalAssists
                 const KillDivide = KillsAssits / Deaths * 1
                 const KDA = KillDivide.toFixed(2);
 
-                const win = info.TotalGamesLost / info.TotalGamesWon * 100
+                const win = info.TotalGamesWon / TotalGames * 100
                 const winPercentage = win.toFixed(2);
 
                 const totalHeadshots = info.TotalHeadshots
@@ -62,8 +70,9 @@ function ArenaStats(props) {
                 const textRank = dataRank.map(r => {
                     return (
                         <div key={r.id}>
-                            {info.Csr.DesignationId === Number(r?.id) ? (
-                                <div  className="rankImageContainer_B"> 
+                            {HighestDesignation === Number(r?.id) ? (
+                                // {info.Csr.DesignationId === Number(r?.id) ? (
+                                <div className="rankImageContainer_B">
                                     <h3 className="textTier">{r.name}</h3>
                                 </div>
                             ) : null}
@@ -71,16 +80,17 @@ function ArenaStats(props) {
                     )
                 })
 
-
                 const imageRank = dataRank.map(r => {
                     return (
                         <div key={r.id}>
-                            {info.Csr.DesignationId === Number(r?.id) ? (
+                            {HighestDesignation === Number(r?.id) ? (
+                                // {info.Csr.DesignationId === Number(r?.id) ? (
                                 <div>
                                     {r?.tiers?.map(t => {
                                         return (
                                             <div key={t.id}>
-                                                {info.Csr.Tier === Number(t?.id) ? (
+                                                {HighestTier === Number(t?.id) ? (
+                                                    // {info.Csr.Tier === Number(t?.id) ? (
                                                     <div>
                                                         <img className="tierCardImage" src={t.iconImageUrl} alt="rank images" />
                                                     </div>
@@ -100,24 +110,26 @@ function ArenaStats(props) {
                     <div key={info.PlaylistId}>
                         <div className='statsContainer'>
                             <div className="statsContainerRanks">
+                                PLAYLIST NAME
                                 {
                                     data.map(p => {
                                         if (info.PlaylistId === p?.id) {
                                             return (
                                                 <div key={p.id}>
-                                                    <h4 className="playlistName">{p?.name}</h4>
+                                                    <h3 className="playlistName">{p?.name}</h3>
                                                 </div>
                                             )
                                         }
                                     })
                                 }
 
-                                <div className="rankImageContainer">
-                                    {/* // RANKED STATS AND IMAGE //////////////////////////////////////////////////////////////// */}
+                                {/* // RANKED STATS AND IMAGE //////////////////////////////////////////////////////////////// */}
+                                {/* <div className="rankImageContainer">
                                     {props.CurrentRank === undefined || props.CurrentRank.length === 0 ? (<div><h4 className="textStats2">NO Data Available</h4></div>) : (<div></div>)}
                                     {props.CurrentRank.map(info => {
-                                        if (info.Csr.DesignationId === HighestDesignat) {
-                                            if (info.Csr.Tier === HighestTier) {
+                                        if (HighestDesignation === HighestDesignation) {
+
+                                            if (HighestCsrTier === HighestTier) {
                                                 return (
                                                     <div key={info.Csr.Tier} >
                                                         {textRank}
@@ -131,15 +143,16 @@ function ArenaStats(props) {
                                                     </div>
                                                 )
                                             } else {
-                                                return (<div></div>)
+                                                return (<div>NOT AVAILABLE</div>)
                                             }
                                         }
-                                    })}
-                                </div>
+                                    })} 
+                                </div> */}
+
                             </div>
 
-                            <div className="statsSection1">
-                                <div className="statsContainer_B">
+                            <div className="statsContainer_B">
+                                <div className="statsContainer_C">
                                     <div className="statMain">
                                         <span className='textStats'>KDA Ratio</span><span className='textStatsBold'>{KDA}</span>
                                     </div>
@@ -147,7 +160,7 @@ function ArenaStats(props) {
                                         <span className='textStats'>Win %</span><span className='textStatsBold'>{winPercentage}%</span>
                                     </div>
                                 </div>
-                                <div className="statsContainer_B">
+                                <div className="statsContainer_C">
                                     <div className="statMain">
                                         <span className='textStats'>Average KDA</span><span className='textStatsBold'>--</span>
                                     </div>
@@ -157,8 +170,8 @@ function ArenaStats(props) {
                                 </div>
                             </div>
 
-                            <div className="statsSection1">
-                                <div className="statsContainer_B">
+                            <div className="statsContainer_B">
+                                <div className="statsContainer_C">
                                     <div className="stat">
                                         <span className='textStats'>Total Kills</span><span className='textStatsBold'>{TotalKillsPlayer}</span>
                                     </div>
@@ -166,7 +179,7 @@ function ArenaStats(props) {
                                         <span className='textStats'>Assists</span><span className='textStatsBold'>{Assists}</span>
                                     </div>
                                 </div>
-                                <div className="statsContainer_B">
+                                <div className="statsContainer_C">
                                     <div className="stat">
                                         <span className='textStats'>Deaths</span><span className='textStatsBold'>{Deaths}</span>
                                     </div>
@@ -176,8 +189,8 @@ function ArenaStats(props) {
                                 </div>
                             </div>
 
-                            <div className="statsSection1">
-                                <div className="statsContainer_B">
+                            <div className="statsContainer_B">
+                                <div className="statsContainer_C">
                                     <div className="stat">
                                         <span className='textStats'>Games Won</span><span className='textStatsBold'>{info.TotalGamesWon}</span>
                                     </div>
@@ -185,7 +198,7 @@ function ArenaStats(props) {
                                         <span className='textStats'>Games Lost</span><span className='textStatsBold'>{info.TotalGamesLost}</span>
                                     </div>
                                 </div>
-                                <div className="statsContainer_B">
+                                <div className="statsContainer_C">
                                     <div className="stat">
                                         <span className='textStats'>Games Tied</span><span className='textStatsBold'>{info.TotalGamesTied}</span>
                                     </div>
@@ -193,9 +206,21 @@ function ArenaStats(props) {
                                         <span className='textStats'>Betrayals</span><span className='textStatsBold'>--?</span>
                                     </div>
                                 </div>
-                                <div className="statsContainer_B">
+                            </div>
+
+                            <div className="statsContainer_B">
+                                <div className="statsContainer_C">
                                     <div className="stat">
                                         <span className='textStats'>Assasinations</span><span className='textStatsBold'>{info.TotalAssassinations}</span>
+                                    </div>
+                                    <div className="stat">
+                                        <span className='textStats'>Shoulder Bash</span><span className='textStatsBold'>{info.TotalShoulderBashKills}</span>
+                                    </div>
+                                </div>
+
+                                <div className="statsContainer_C">
+                                    <div className="stat">
+                                        <span className='textStats'>---</span><span className='textStatsBold'>--</span>
                                     </div>
                                     <div className="stat">
                                         <span className='textStats'>Ground Pounds</span><span className='textStatsBold'>{info.TotalGroundPoundKills}</span>

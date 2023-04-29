@@ -41,9 +41,9 @@ function HaloPlayers() {
   // ]
 
 
-// 0 : Id: "jegan18"
-// Result: {ArenaStats: {…}, PlayerId: {…}, SpartanRank: 148, Xp: 14127106}
-// ResultCode: 0
+//"jegan18"
+
+
 
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");

@@ -80,6 +80,13 @@
   color: white;
 }
 
+.btnAppLocat {
+  padding: 10px;
+  width: 128px;
+}
+
+
+
 @media only screen and (max-width: 425px) {
 
   .SearchbarContainer {

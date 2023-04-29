@@ -1,4 +1,23 @@
-.matchCard {
+.sectionMatchCardPlayer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    background-color: rgb(84, 84, 84);
+    border-radius: 8px;
+}
+
+.sectionMatchCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    background-color: rgb(84, 84, 84);
+    border-radius: 8px;
+}
+
+
+.sectionMatchCard2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,6 +31,7 @@
     /* margin: 4px; */
     padding: 8px;
 }
+
 .teamColor {
     color: '';
 }
@@ -41,24 +61,53 @@
     justify-content: space-evenly;
 }
 
+.matchStatsResults {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.matchStatsResults {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+
 .matchStatsScore {
-   margin: 12px;
+    width: 20%;
+}
+
+.test {
+    width: 100%;
 }
 
 .redText {
     color: red;
 }
+
 .blueText {
     color: blue;
 }
 
 /* HALO MATCH RESULTS STYLING ////////////////////////////////////////// */
 
-.matchCardContainer { 
-  width: 100%;
+.matchCardContainer {
+    width: 100%;
 }
 
-.matchCardResults {
+.matchCardContainer_Titles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .1rem;
+    padding: 5px;
+    background-color: rgb(84, 84, 84);
+    border-radius: 8px;
+}
+
+.matchCardContainer_B {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +122,7 @@
     align-items: center;
     justify-content: space-evenly;
     background-color: #282c34;
-    background-image: linear-gradient(to right,rgba(255,0,0,1), rgba(255,0,0,0), rgba(255,0,0,0), rgba(255,0,0,0));
+    background-image: linear-gradient(to right, rgba(255, 0, 0, 1), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0));
     border: 1px solid black;
     width: 100%;
 }
@@ -83,18 +132,89 @@
     align-items: center;
     justify-content: space-evenly;
     background-color: #282c34;
-    background-image: linear-gradient(to right,rgba(0,0,255,1), rgba(255,0,0,0), rgba(255,0,0,0), rgba(255,0,0,0));
+    background-image: linear-gradient(to right, rgba(0, 0, 255, 1), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0));
     border: 1px solid black;
     width: 100%;
 }
-/* ////////////////////////////////////////////////// */
 
+.matchStatsResults2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.part2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #282c34;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.mobileContainer {
+    display: none;
+    border: 2px solid red;
+}
+
+.matchStatsResults3 {
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+
+/* ////////////////////////////////////////////////// */
 
 @media only screen and (max-width: 425px) {
 
-    .matchCard {
+    .matchCardContainer_Titles {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: .6rem .3rem;
+        padding: 5px;
+        background-color: rgb(84, 84, 84);
+        border-radius: 8px;
+    }
+
+
+
+    .matchCardContainer_B {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: .7rem .3rem;
+        padding: 5px;
+        background-color: rgb(84, 84, 84);
+        border-radius: 8px;
+    }
+
+    .sectionMatchCardPlayer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        border-radius: 8px;
+    }
+
+    .sectionMatchCard {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        background-color: #282c34;
+        border-radius: 8px;
+    }
+
+    .sectionMatchCard2 {
+        display: flex;
         justify-content: center;
         align-items: center;
         margin: 1rem;
@@ -107,6 +227,37 @@
     }
 
     .section2 {
+        width: 100%;
+    }
+
+    .matchStats {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .matchStatsResults2 {
+        display: none;
+    }
+
+    .mobileContainer {
+        display: none;
+        border: 2px solid blue;
+    }
+
+    .matchStatsResults3 {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .part2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #282c34;
+        border: 1px solid black;
         width: 100%;
     }
 }

@@ -1,0 +1,53 @@
+.cardSection1 {
+    background-color: rgb(64, 64, 64);
+    border-radius: 8px;
+    width: 30%;
+    height: 225px;
+    margin: 0 1%;
+}
+
+.peakImage {
+    display: flex;
+}
+
+.textCsr {
+    width: 50%;
+    margin-right: 10px;
+}
+.highestRankImage {
+    margin-left: 10px;
+    width: 50%;
+    height: auto;
+}
+
+.peakTextTitle {
+    color: white;
+    margin: 5px;
+}
+.peakText {
+    color: white;
+}
+.peakTextTier {
+    color: white;
+    margin: 5px 12px;
+}
+
+
+@media only screen and (max-width: 425px) {
+
+    .cardSection1 {
+        background-color: rgb(64, 64, 64);
+        border-radius: 8px;
+        width: 90%;
+        height: 160px;
+        margin: 2% 1%;
+    }
+
+    .peakImage {
+        padding: 0 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
