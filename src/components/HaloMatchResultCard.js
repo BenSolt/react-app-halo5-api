@@ -22,12 +22,12 @@ export default function HaloMapCard({ m }) {
 
     function toggleOpen() {
         var element = document.getElementById(m.Player.Gamertag);
-        element.classList.toggle("part2");
+        element.classList.toggle("a");
     }
 
     return (
         <div className="matchCardContainer_B">
-            <div className="matchStatsResults3">
+            <div className="matchStatsSection1">
                 <h4 className='textStats'>Rank</h4>
                 <h4 className='textStats'>Player Name</h4>
                 <h4 className='textStats'>K/D Ratio</h4>
@@ -36,22 +36,43 @@ export default function HaloMapCard({ m }) {
             <div className={color}>
                 <h4 className='textStats'>{m.Rank}</h4>
                 <h4 className='textStats'>{m.Player.Gamertag}</h4>
-                <h4 className='textStats'>{KDA}</h4>
-                {/* <button onClick={toggleOpen}>open</button> */}
+                <span className="hideKDA"><h4 className='textStats'>{KDA}</h4></span>
+                <button onClick={toggleOpen} className="hidetablet">Open</button>
             </div>
 
-
-            <div className="matchStatsResults3">
+            <div className="matchStatsSection1">
                 <h4 className='textStats'>Kills</h4>
                 <h4 className='textStats'>Assits</h4>
                 <h4 className='textStats'>Deaths</h4>
             </div>
 
-            <div className="part2" id={m.Player.Gamertag} >
+            <div className="matchStatsSection2" >
                 <h4 className='textStats'>{m.TotalKills}</h4>
                 <h4 className='textStats'>{m.TotalAssists}</h4>
                 <h4 className='textStats'>{m.TotalDeaths}</h4>
             </div>
+
+            <div className="toggleMobileContainer a" id={m.Player.Gamertag}>
+                <div className="mobileSection1">
+                    <h4 className='textStats'>K/D Ratio</h4>
+                    <h4 className='textStats'>Kills</h4>
+                </div>
+
+                <div className="mobileSection2" >
+                    <h4 className='textStats'>{KDA}</h4>
+                    <h4 className='textStats'>{m.TotalKills}</h4>
+                </div>
+
+                <div className="mobileSection1">
+                    <h4 className='textStats'>Assits</h4>
+                    <h4 className='textStats'>Deaths</h4>
+                </div>
+                <div className="mobileSection2" >
+                    <h4 className='textStats'>{m.TotalAssists}</h4>
+                    <h4 className='textStats'>{m.TotalDeaths}</h4>
+                </div>
+            </div>
         </div>
+
     )
 }

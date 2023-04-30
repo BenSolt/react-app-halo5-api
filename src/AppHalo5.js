@@ -9,7 +9,9 @@ import HaloRanks from './components/HaloRanks';
 
 import MatchHistory from './components/HaloMatchHistory';
 
-// import TestResultCard from "./components/TestResultCard";
+import TestResultCard from "./components/TestResultCard";
+import TestHaloCard from "./components/TestHaloCard";
+
 // import HaloPlaylists from './components/HaloPlaylists';
 
 import './css/navbar.css';
@@ -19,6 +21,8 @@ function AppUpload() {
     return (
         <div className="App">
             <Navbar/>
+            {/* <TestResultCard/> */}
+            {/* <TestHaloCard/> */}
 
             <Routes>
                 <Route path="/" element={<HaloPlayers/>} />
@@ -29,7 +33,6 @@ function AppUpload() {
                 {/* <Route path="/playlists" element={<HaloPlaylists />} /> */}
             </Routes>
 
-            {/* <TestResultCard/> */}
         </div>
 
     );

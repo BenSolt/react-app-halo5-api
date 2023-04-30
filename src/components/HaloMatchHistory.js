@@ -12,7 +12,7 @@ function HaloPlaylists() {
     const [isSearching, setIsSearching] = useState(false);
 
     // const [player, setPlayer] = useState("")
-    const [player, setPlayer] = useState("xtianumbra")
+    const [player, setPlayer] = useState("")
     const [mode, setMode] = useState("arena");
     const [count, setCount] = useState(1);  //3
     //const [query, setQuery] = useState("");

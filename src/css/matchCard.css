@@ -123,7 +123,6 @@
     justify-content: space-evenly;
     background-color: #282c34;
     background-image: linear-gradient(to right, rgba(255, 0, 0, 1), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0));
-    border: 1px solid black;
     width: 100%;
 }
 
@@ -133,7 +132,6 @@
     justify-content: space-evenly;
     background-color: #282c34;
     background-image: linear-gradient(to right, rgba(0, 0, 255, 1), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0));
-    border: 1px solid black;
     width: 100%;
 }
 
@@ -144,25 +142,39 @@
     width: 100%;
 }
 
-.part2 {
+.matchStatsSection1 {
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.matchStatsSection2 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     background-color: #282c34;
-    border: 1px solid black;
     width: 100%;
 }
 
-.mobileContainer {
+.toggleMobileContainer {
+    width: 100%;
+}
+.a {
     display: none;
-    border: 2px solid red;
 }
 
-.matchStatsResults3 {
+
+.hidetablet {
     display: none;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
+}
+
+.hideKDA {
+    display: block;
+}
+
+.mobileSection1, .mobileSection2 {
+    display: none;
 }
 
 
@@ -180,8 +192,6 @@
         background-color: rgb(84, 84, 84);
         border-radius: 8px;
     }
-
-
 
     .matchCardContainer_B {
         display: flex;
@@ -240,24 +250,35 @@
         display: none;
     }
 
-    .mobileContainer {
-        display: none;
-        border: 2px solid blue;
-    }
-
-    .matchStatsResults3 {
+    .mobileSection1 {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         width: 100%;
     }
 
-    .part2 {
-        display: flex;
+    .matchStatsSection2 {
+        display: none;
         align-items: center;
         justify-content: space-evenly;
         background-color: #282c34;
         border: 1px solid black;
         width: 100%;
+    }
+
+    .mobileSection2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #282c34;
+        width: 100%;
+    }
+
+    .hidetablet {
+        display: flex;
+    }
+
+    .hideKDA {
+        display: none;
     }
 }

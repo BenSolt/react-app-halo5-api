@@ -293,15 +293,16 @@ h6 {
         border-radius: 8px;
     }
 
-    .statsSection1 {
+    .statsContainer_B {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    .statsContainer_B {
+    .statsContainer_C {
         display: flex;
+        justify-content: space-evenly;
         width: 90%;
         height: 80px;
     }

@@ -18,14 +18,19 @@ function ArenaStats(props) {
 
 
     // useEffect(() => {
-        // axiosWithAuth()
-        //     .get('https://www.haloapi.com/metadata/h5/metadata/csr-designations')
-        //     .then(res => {
-        //         const info = res.data
-        //         // console.log(info);
-        //         setDataRank(info);
-        //     });
+    //     axiosWithAuth()
+    //         .get('https://www.haloapi.com/metadata/h5/metadata/csr-designations')
+    //         .then(res => {
+    //             const info = res.data
+    //             // console.log(info);
+    //             setDataRank(info);
+    //         });
     // }, []);
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //cannot read properties of null (reading 'tier')
+    // info.Csr.Tier is coming back null... Meaning there is no Tier rank... b/c one has not placed yet.. how do i set rule for this?
 
 
 
@@ -34,14 +39,8 @@ function ArenaStats(props) {
             {/* <button onClick={getPlaylist}>PlayList</button> */}
             {props.CurrentRank.map(info => {
 
-                // {props.CurrentRank === undefined || props.CurrentRank.length === 0 ? (<div><h4 className="textStats2">NO Data Available</h4></div>) : (<div></div>)}
-                // {props.CurrentRank.map(info => {
-
-                const HighestCsrTier = info?.Csr ? info?.Csr : null
-                //HighestCsrTier === undefined ? (<div><h4 className="textStats2">NO Data Available</h4></div>) : (<div></div>)
                 const HighestTier = info?.Csr?.Tier ? info?.Csr?.Tier : null
                 const HighestDesignation = info?.Csr?.DesignationId ? info?.Csr?.DesignationId : null
-
 
                 const TotalKillsPlayer = info.TotalKills
                 const Assists = info.TotalAssists
@@ -66,12 +65,10 @@ function ArenaStats(props) {
                 const hsResult = totalHeadshots / TotalKillsPlayer * 100;
                 let hsAccuracy = hsResult.toFixed(1);
 
-
                 const textRank = dataRank.map(r => {
                     return (
                         <div key={r.id}>
                             {HighestDesignation === Number(r?.id) ? (
-                                // {info.Csr.DesignationId === Number(r?.id) ? (
                                 <div className="rankImageContainer_B">
                                     <h3 className="textTier">{r.name}</h3>
                                 </div>
@@ -84,13 +81,11 @@ function ArenaStats(props) {
                     return (
                         <div key={r.id}>
                             {HighestDesignation === Number(r?.id) ? (
-                                // {info.Csr.DesignationId === Number(r?.id) ? (
                                 <div>
                                     {r?.tiers?.map(t => {
                                         return (
                                             <div key={t.id}>
                                                 {HighestTier === Number(t?.id) ? (
-                                                    // {info.Csr.Tier === Number(t?.id) ? (
                                                     <div>
                                                         <img className="tierCardImage" src={t.iconImageUrl} alt="rank images" />
                                                     </div>
@@ -105,12 +100,10 @@ function ArenaStats(props) {
                 })
 
 
-
                 return (
                     <div key={info.PlaylistId}>
                         <div className='statsContainer'>
                             <div className="statsContainerRanks">
-                                PLAYLIST NAME
                                 {
                                     data.map(p => {
                                         if (info.PlaylistId === p?.id) {
@@ -124,12 +117,14 @@ function ArenaStats(props) {
                                 }
 
                                 {/* // RANKED STATS AND IMAGE //////////////////////////////////////////////////////////////// */}
-                                {/* <div className="rankImageContainer">
+
+                                <div className="rankImageContainer">
                                     {props.CurrentRank === undefined || props.CurrentRank.length === 0 ? (<div><h4 className="textStats2">NO Data Available</h4></div>) : (<div></div>)}
                                     {props.CurrentRank.map(info => {
-                                        if (HighestDesignation === HighestDesignation) {
-
-                                            if (HighestCsrTier === HighestTier) {
+                                        const CsrInfo = info.Csr ? info?.Csr : null;
+                                        const CsrPercentileInfo = info.CsrPercentile ? info?.CsrPercentile : null;
+                                        if (CsrInfo) {
+                                            if (HighestTier) {
                                                 return (
                                                     <div key={info.Csr.Tier} >
                                                         {textRank}
@@ -143,11 +138,18 @@ function ArenaStats(props) {
                                                     </div>
                                                 )
                                             } else {
-                                                return (<div>NOT AVAILABLE</div>)
+                                                return (
+                                                    <div>
+                                                        {textRank}
+                                                        <div className="rankImageContainer_B">
+                                                            NO DATA AVAILABLE
+                                                        </div>
+                                                    </div>
+                                                )
                                             }
                                         }
-                                    })} 
-                                </div> */}
+                                    })}
+                                </div>
 
                             </div>
 

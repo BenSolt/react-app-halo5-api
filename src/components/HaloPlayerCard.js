@@ -25,14 +25,8 @@ export default function HaloPlayerCard({ p }) {
     const CurrentRank = p?.Result?.ArenaStats.ArenaPlaylistStats ?
         p?.Result?.ArenaStats.ArenaPlaylistStats : null;
 
-    // CurrentRank.map(r => {
-    //     return < HaloRankCard key={r.id} r={r} />
-    // })}
-
     const HRankAttainedDesign = p?.Result?.ArenaStats.HighestCsrAttained ?
         p?.Result?.ArenaStats.HighestCsrAttained.DesignationId : null;
-
-
 
     // HIGEST CSR STATS ///////////////////////////////////////////////////////////////////////
     const HRankAttainedTier = p?.Result?.ArenaStats.HighestCsrAttained ?
