@@ -11,6 +11,7 @@ import MatchHistory from './components/HaloMatchHistory';
 
 import TestResultCard from "./components/TestResultCard";
 import TestHaloCard from "./components/TestHaloCard";
+import TestLoading from "./components/TestLoading";
 
 // import HaloPlaylists from './components/HaloPlaylists';
 
@@ -23,6 +24,7 @@ function AppUpload() {
             <Navbar/>
             {/* <TestResultCard/> */}
             {/* <TestHaloCard/> */}
+            {/* <TestLoading/> */}
 
             <Routes>
                 <Route path="/" element={<HaloPlayers/>} />

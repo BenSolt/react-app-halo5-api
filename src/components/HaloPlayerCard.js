@@ -70,7 +70,11 @@ export default function HaloPlayerCard({ p }) {
     const hsResult = totalHeadShots / TotalKillsPlayer * 100;
     let hsAccuracy = hsResult.toFixed(1);
 
+    function selectDropdown() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
 
+    //CurrentRank.map(info => {}
 
     return (
         <div className="playerCardContainer">
@@ -222,6 +226,7 @@ export default function HaloPlayerCard({ p }) {
                     <h3 className="textTitle">CURRENT ARENA PLAYLIST STATS</h3>
 
                     <Arr_ArenaStats CurrentRank={CurrentRank} />
+
                 </div>
             </div>
         </div>

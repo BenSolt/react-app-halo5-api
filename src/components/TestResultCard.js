@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import '../css/matchCard.css';
 
-// const CurrentRank = p.Result.ArenaStats.ArenaPlaylistStats ?
-//         p?.Result?.ArenaStats.ArenaPlaylistStats : null;
-
-//info.Csr.Tier
-
 const playlistArr = [
     {
         playlistId: 0,
@@ -113,13 +108,15 @@ const arr = [
         TotalAssists: 8,
         TotalDeaths: 16
     }
-]
+];
 
 function TestResultCard() {
 
     const [dataMatch, setDataMatch] = useState(arr);
     const [dataMatch2, setDataMatch2] = useState(arr2);
     const [showbar, setShowBar] = useState(false);
+    const [rankShow, setRankShow] = useState(0);
+    const [playlistShow, setPlaylistShow] = useState(0);
 
     let color = " "
 
@@ -144,11 +141,15 @@ function TestResultCard() {
         return 0;
     });
 
+
     return (
         <div>
-            <div className="rankImageContainer">
+
+
+            <div>
+
                 {/* {dataMatch2 === undefined || dataMatch2.length === 0 ? (<div><h4 className="textStats2">NO Data Available</h4></div>) : (<div></div>)} */}
-                {/* {dataMatch2.map(info => {
+                {dataMatch2.map(info => {
 
                     const HighestCsrT = info?.Csr ? info?.Csr : null;
 
@@ -157,52 +158,78 @@ function TestResultCard() {
 
                     const CsrStats = info.Result.ArenaStats.ArenaPlaylistStats
 
-
-                    console.log("INFO:", info)
-
-
-                    let age = 18;
-                    const ternay = age >= 16 ? ('You can drive.') : ('You cannot drive.');
-
-
                     return (
-                        <div className="textStats">
+                        <div key={info.Result.PlayerId.Gamertag}>
+                            <button onClick={(e) => setPlaylistShow(0)}>Slayer</button>
+                            <button onClick={(e) => setPlaylistShow(1)}>Swat</button>
 
                             <h4 className='textStats'>{info.Result.PlayerId.Gamertag}</h4>
-
+                            {/* playlistArr */}
                             {CsrStats.map(info2 => {
+                                if (info2.PlaylistId === playlistShow) {
                                 const CsrInfo = info2.Csr ? info2?.Csr : null;
-
                                 if (CsrInfo) {
-
                                     return (
-                                        <div>
-                                            DESIGANTION AVAILABLE
-                                            <h3>Kills: {info2.TotalKills}</h3>
-                                            <h3>Design Id: {info2.Csr.DesignationId}</h3>
-                                            <h3>Tier: {info2.Csr.Tier}</h3>
-                                            <h3>Precentile: {info2.CsrPercentile}%</h3>
+                                        <div key={info.Result.PlayerId.Gamertag}>
+                                            <h3 className="textStats">{info2.PlaylistId}</h3>
+                                            <h3 className="textStats">Kills: {info2.TotalKills}</h3>
+                                            <h3 className="textStats">Design Id: {info2.Csr.DesignationId}</h3>
+                                            <h3 className="textStats">Tier: {info2.Csr.Tier}</h3>
+                                            <h3 className="textStats">Precentile: {info2.CsrPercentile}%</h3>
                                         </div>
                                     )
                                 }
+                          
                                 else {
                                     return (
-                                        <div className="textStats" >
-                                            DESIGANTION NOT AVAILABLE
+                                        <div className="textStats" key={0}>
+                                            No Information Available
+                                            <h3 className="textStats">{info2.PlaylistId}</h3>
 
                                         </div>
                                     )
                                 }
-                            })}
+                            }}
+                            )}
+                            
                         </div>
                     )
-                })} */}
+                })}
 
 
             </div>
 
             <div className="matchCardResults">
                 <div className="matchCard">
+
+                    <button onClick={(e) => setRankShow(1)}>Rank 1?</button>
+                    <button onClick={(e) => setRankShow(2)}>Rank 2?</button>
+                    <div>{dataMatch.map(m => {
+                        const KillsAssits = m.TotalKills + m.TotalAssists
+                        const KillDivide = KillsAssits / m.TotalDeaths * 1
+                        const KDA = KillDivide.toFixed(2);
+
+                        if (m.Rank === rankShow) {
+                            return (
+                                <div className="matchCardContainer_B" key={m.Gamertag}>
+
+                                    <div className="matchStatsSection2" >
+                                        <h4 className='textStats'>{m.Rank}</h4>
+                                        <h4 className='textStats'>{m.Gamertag}</h4>
+                                        <span className="hideKDA"><h4 className='textStats'>{KDA}</h4></span>
+                                    </div>
+
+                                    <div className="matchStatsSection2" >
+                                        <h4 className='textStats'>{m.TotalKills}</h4>
+                                        <h4 className='textStats'>{m.TotalAssists}</h4>
+                                        <h4 className='textStats'>{m.TotalDeaths}</h4>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    })}
+                    </div>
+
                     <div className="matchCardContainer">
                         {dataMatch.map(m => {
                             const KillsAssits = m.TotalKills + m.TotalAssists
@@ -217,25 +244,13 @@ function TestResultCard() {
 
                             function toggleOpen() {
                                 var element = document.getElementById(m.Gamertag);
-                                // element.classList.toggle("part2");
                                 element.classList.toggle("toggleMobileContainer");
                             }
 
                             return (
-                                <div className="sectionMatchCarda">
+                                <div className="sectionMatchCard" key={m.Gamertag}>
 
                                     <div className="matchCardContainer_B">
-                                        <div className="matchStatsSection1">
-                                            <h4 className='textStats'>Rank</h4>
-                                            <h4 className='textStats'>Player Name</h4>
-                                            <h4 className='textStats'>K/D Ratio</h4>
-                                        </div>
-
-                                        <div className="matchStatsSection1">
-                                            <h4 className='textStats'>Rank</h4>
-                                            <h4 className='textStats'>Player Name</h4>
-                                            <h4 className='textStats'>K/D Ratio</h4>
-                                        </div>
 
                                         <div className={color}>
                                             <h4 className='textStats'>{m.Rank}</h4>
@@ -244,18 +259,11 @@ function TestResultCard() {
                                             <button onClick={toggleOpen} className="hidetablet">open</button>
                                         </div>
 
-                                        <div className="matchStatsSection1">
-                                            <h4 className='textStats'>Kills</h4>
-                                            <h4 className='textStats'>Assits</h4>
-                                            <h4 className='textStats'>Deaths</h4>
-                                        </div>
-
-                                        <div className="part2" >
+                                        <div className="matchStatsSection2" >
                                             <h4 className='textStats'>{m.TotalKills}</h4>
                                             <h4 className='textStats'>{m.TotalAssists}</h4>
                                             <h4 className='textStats'>{m.TotalDeaths}</h4>
                                         </div>
-
 
                                         <div className="toggleMobileContainer" id={m.Gamertag}>
                                             <div className="mobileSection1">

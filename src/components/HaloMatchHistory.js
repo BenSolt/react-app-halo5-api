@@ -1,9 +1,11 @@
-import '../App.css';
+
 import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import HaloMatchHistoryCard from "../components/HaloMatchHistoryCard";
 import HaloMapCard from "../components/HaloMapCard";
 
+import '../css/dropdown.css';
+import '../App.css';
 
 function HaloPlaylists() {
     const [dataMatch, setDataMatch] = useState([]);
@@ -11,11 +13,9 @@ function HaloPlaylists() {
     const [isLoading, setIsLoading] = useState(true);
     const [isSearching, setIsSearching] = useState(false);
 
-    // const [player, setPlayer] = useState("")
     const [player, setPlayer] = useState("")
     const [mode, setMode] = useState("arena");
     const [count, setCount] = useState(1);  //3
-    //const [query, setQuery] = useState("");
 
     useEffect(() => {
         if (isLoading) return
@@ -54,6 +54,7 @@ function HaloPlaylists() {
                             placeholder="Enter Xbox Live Username"
                             autoComplete="off"
                         />
+
                         <button className='buttonSearch' onClick={getInfoMatch}>Search</button>
                     </div>
                 </div>
@@ -70,7 +71,7 @@ function HaloPlaylists() {
                     )}
                 </div>) : (<div></div>)}
             </div>
-        </div>
+        </div >
     )
 }
 export default HaloPlaylists;

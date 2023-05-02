@@ -54,7 +54,7 @@ function HaloPlayers() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 5000);
     return () => clearTimeout(timer);
   }, []);
 

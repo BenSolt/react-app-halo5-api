@@ -50,11 +50,11 @@ export default function HaloMapCard({ m }) {
         setShowBar(true)
     }
 
-    
+
 
     dataMatch.sort((a, b) => {
         // sort by team first
-        if (b.GameEndStatus< a.GameEndStatus) {
+        if (b.GameEndStatus < a.GameEndStatus) {
             return -1;
         }
         if (a.GameEndStatus > b.GameEndStatus) {
@@ -79,9 +79,26 @@ export default function HaloMapCard({ m }) {
         return 0;
     });
 
+    // SELECT ARENA GAME MODE /////////////////////////////////////////////////////////////////
+    function selectDropdown() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////
 
     return (
         <div >
+
+            {/* SELECT ARENA GAME MODE //////////////////////////////////////////////////////// */}
+            <div className="dropdown">
+                <button onClick={selectDropdown} className="dropbtn">Select Arena Mode</button>
+                <div id="myDropdown" className="dropdown-content">
+                    <a href="#">Slayer</a>
+                    <a href="#">Arena</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            {/* ////////////////////////////////////////////////////////////////////////////////// */}
+
             <div className="sectionMatchCardPlayer">
                 <div className="mapImageSection1">
                     {dataMap.map(a => {
@@ -140,7 +157,7 @@ export default function HaloMapCard({ m }) {
 
             {/* TEAMS INFO: PLACED 1st or 2nd /////////////////////////// */}
             <div>
-        
+
                 <div className="sectionMatchCard2">{m.Teams.map(i => {
                     if (i.Id === 0) {
                         teamColor = 'redText';
@@ -164,17 +181,17 @@ export default function HaloMapCard({ m }) {
                 <div className="matchCardContainer">
 
                     <div className="matchCardContainer_Titles">
-                    {showbar && <div className="matchStatsResults">
-                        <h4 className='textStats'>Rank</h4>
-                        <h4 className='textStats'>Player Name</h4>
-                        <h4 className='textStats'>K/D Ratio</h4>
-                    </div>}
+                        {showbar && <div className="matchStatsResults">
+                            <h4 className='textStats'>Rank</h4>
+                            <h4 className='textStats'>Player Name</h4>
+                            <h4 className='textStats'>K/D Ratio</h4>
+                        </div>}
 
-                    {showbar && <div className="matchStatsResults2">
-                        <h4 className='textStats'>Kills</h4>
-                        <h4 className='textStats'>Assits</h4>
-                        <h4 className='textStats'>Deaths</h4>
-                    </div>}
+                        {showbar && <div className="matchStatsResults2">
+                            <h4 className='textStats'>Kills</h4>
+                            <h4 className='textStats'>Assits</h4>
+                            <h4 className='textStats'>Deaths</h4>
+                        </div>}
                     </div>
 
 

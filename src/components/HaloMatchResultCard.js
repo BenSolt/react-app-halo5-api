@@ -35,6 +35,7 @@ export default function HaloMapCard({ m }) {
 
             <div className={color}>
                 <h4 className='textStats'>{m.Rank}</h4>
+                <h4 className='textStats'>(Rank Image)</h4>
                 <h4 className='textStats'>{m.Player.Gamertag}</h4>
                 <span className="hideKDA"><h4 className='textStats'>{KDA}</h4></span>
                 <button onClick={toggleOpen} className="hidetablet">Open</button>
