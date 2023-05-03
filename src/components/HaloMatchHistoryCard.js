@@ -8,13 +8,24 @@ import '../css/matchCard.css';
 export default function HaloMapCard({ m }) {
 
     const [dataMap, setDataMap] = useState([]);
-    let color = "";
     let teamColor = "";
 
     const [dataMatch, setDataMatch] = useState([]);
     const [showbar, setShowBar] = useState(false);
 
-    // useEffect(() => {
+    useEffect(() => {
+        axiosWithAuth()
+            .get('https://www.haloapi.com/metadata/h5/metadata/maps')
+            .then(res => {
+                const info = res.data
+                console.log(info)
+                setDataMap(info);
+                // setIsLoading(false);
+                // setIsSearching(true);
+            });
+    }, [])
+
+    // function getInfoMap() {
     //     axiosWithAuth()
     //         .get('https://www.haloapi.com/metadata/h5/metadata/maps')
     //         .then(res => {
@@ -23,18 +34,7 @@ export default function HaloMapCard({ m }) {
     //             // setIsLoading(false);
     //             // setIsSearching(true);
     //         });
-    // }, [])
-
-    function getInfoMap() {
-        axiosWithAuth()
-            .get('https://www.haloapi.com/metadata/h5/metadata/maps')
-            .then(res => {
-                const info = res.data
-                setDataMap(info);
-                // setIsLoading(false);
-                // setIsSearching(true);
-            });
-    }
+    // }
 
     // HALO 5 API: MATCH RESULT - CUSTOM ///////////////////////////////////////////
     function getMatchResults() {
@@ -79,29 +79,11 @@ export default function HaloMapCard({ m }) {
         return 0;
     });
 
-    // SELECT ARENA GAME MODE /////////////////////////////////////////////////////////////////
-    function selectDropdown() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////
-
     return (
         <div >
-
-            {/* SELECT ARENA GAME MODE //////////////////////////////////////////////////////// */}
-            <div className="dropdown">
-                <button onClick={selectDropdown} className="dropbtn">Select Arena Mode</button>
-                <div id="myDropdown" className="dropdown-content">
-                    <a href="#">Slayer</a>
-                    <a href="#">Arena</a>
-                    <a href="#">Link 3</a>
-                </div>
-            </div>
-            {/* ////////////////////////////////////////////////////////////////////////////////// */}
-
             <div className="sectionMatchCardPlayer">
                 <div className="mapImageSection1">
-                    {dataMap.map(a => {
+                    {dataMap.forEach(a => {
                         if (m?.MapId === a.id) {
                             return (
                                 <div key={a.id}>
@@ -117,12 +99,7 @@ export default function HaloMapCard({ m }) {
                     {/* <h3>{m?.MapId}</h3> */}
                     {/* PLAYER INFO /////////////////////////////// */}
                     <div>{m.Players.map(i => {
-                        if (i.Rank <= 4) {
-                            color = 'green'
-                        } else {
-                            color = 'red'
-                        }
-
+                      
                         const KillsAssits = i.TotalKills + i.TotalAssists
                         const KillDivide = KillsAssits / i.TotalDeaths * 1
                         const KDA = KillDivide.toFixed(2);

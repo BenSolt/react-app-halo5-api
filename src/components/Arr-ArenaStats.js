@@ -7,8 +7,10 @@ function ArenaStats(props) {
     const [dataRank, setDataRank] = useState([]);
     const [showPlaylist, setShowPlaylist] = useState('');
 
-    const Swat = "2323b76a-db98-4e03-aa37-e171cfbdd1a4";
     const Slayer = "892189e9-d712-4bdb-afa7-1ccab43fbed4";
+    const Swat = "2323b76a-db98-4e03-aa37-e171cfbdd1a4";
+   const FFA = ''
+   const Arena = ''
 
     useEffect(() => {
         axiosWithAuth()
@@ -121,7 +123,7 @@ function ArenaStats(props) {
                                             if (info.PlaylistId === p?.id) {
                                                 return (
                                                     <div key={p.id}>
-                                                        <h3 className="playlistName">{p?.name}</h3>
+                                                        <h2 className="playlistName">{p?.name}</h2>
                                                     </div>
                                                 )
                                             }
