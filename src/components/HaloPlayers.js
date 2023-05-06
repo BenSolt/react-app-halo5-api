@@ -6,9 +6,9 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import HaloPlayerCard from "../components/HaloPlayerCard";
 import TestHaloCard from "../components/TestHaloCard";
 
+// import TestLoading from "../components/TestLoading";
 
 function HaloPlayers() {
-
 
   // const players = [
   //   'ACA AC3',
@@ -38,11 +38,8 @@ function HaloPlayers() {
   //   'XD marman',
   //   'Xray Squad 90',
   //   'Xtianumbra',
+  //   'jegan18'
   // ]
-
-
-//"jegan18"
-
 
 
   const [data, setData] = useState([]);
@@ -58,12 +55,7 @@ function HaloPlayers() {
     return () => clearTimeout(timer);
   }, []);
 
-  function getInfo2() {
-    // setIsLoading(false);
-    setIsSearching(true);
-  };
-
-// HALO 5 API: Player Service Records - Arena ///////////////////////////////////////////
+  // HALO 5 API: Player Service Records - Arena ///////////////////////////////////////////
   function getInfo() {
     axiosWithAuth()
       //https://www.haloapi.com/stats/h5/servicerecords/arena?players={players}[&seasonId]
@@ -86,6 +78,8 @@ function HaloPlayers() {
 
   return (
     <div>
+      {/* <TestLoading /> */}
+
       <div className="SearchbarContainer" >
         <h3 className="searchtext">Search Player Stats:</h3>
         <div className="inputContainer">

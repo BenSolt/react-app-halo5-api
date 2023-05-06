@@ -74,13 +74,36 @@
     width: 100%;
 }
 
-
-.matchStatsScore {
-    width: 20%;
+.matchCardContainer_Score {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
-.test {
-    width: 100%;
+.ScoreSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width:100%;
+    /* border: 2px solid red; */
+}
+
+
+.playlistNameB {
+    color: white;
+    text-decoration: underline 2px;
+}
+
+.matchStatsScoreContainer {
+    display: flex;
+    /* border: 2px solid red; */
+}
+
+.matchStatsScore {
+    display: flex;
+    align-items: center;
+    width: 50px;
 }
 
 .redText {
@@ -96,6 +119,7 @@
 .matchCardContainer {
     width: 100%;
 }
+
 
 .matchCardContainer_Titles {
     display: flex;
@@ -160,7 +184,7 @@
 .toggleMobileContainer {
     width: 100%;
 }
-.a {
+.hideMobile {
     display: none;
 }
 
@@ -181,6 +205,18 @@
 /* ////////////////////////////////////////////////// */
 
 @media only screen and (max-width: 425px) {
+
+
+    .matchCardContainer_Score {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: .6rem .3rem;
+        padding: 5px;
+        background-color: rgb(84, 84, 84);
+        border-radius: 8px;
+    }
 
     .matchCardContainer_Titles {
         display: none;

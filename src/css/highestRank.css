@@ -1,12 +1,12 @@
 .cardSection1 {
     background-color: rgb(64, 64, 64);
     border-radius: 8px;
-    width: 30%;
-    height: 225px;
+    width: 40%;
+    height: 256px;
     margin: 0 1%;
 }
 
-.peakImage {
+.peakImageContainer {
     display: flex;
 }
 
@@ -16,7 +16,7 @@
 }
 .highestRankImage {
     margin-left: 10px;
-    width: 50%;
+    width: 40%;
     height: auto;
 }
 
@@ -39,15 +39,22 @@
         background-color: rgb(64, 64, 64);
         border-radius: 8px;
         width: 90%;
-        height: 160px;
+        height: 225px;
         margin: 2% 1%;
     }
 
-    .peakImage {
+    .peakImageContainer {
         padding: 0 10%;
         display: flex;
         justify-content: center;
         align-items: center;
         justify-content: space-between;
     }
+
+    .highestRankImage {
+        margin-left: 10px;
+        /* width: 30%;
+        height: auto; */
+    }
+
 }

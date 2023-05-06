@@ -70,11 +70,6 @@ export default function HaloPlayerCard({ p }) {
     const hsResult = totalHeadShots / TotalKillsPlayer * 100;
     let hsAccuracy = hsResult.toFixed(1);
 
-    function selectDropdown() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    //CurrentRank.map(info => {}
 
     return (
         <div className="playerCardContainer">
@@ -82,6 +77,7 @@ export default function HaloPlayerCard({ p }) {
             {/* HIGHEST RANK ACHIEVED //////////////////////////////////////////////////////////// */}
             <HighestRankContainer CurrentRank={CurrentRank} HRankAttainedDesign={HRankAttainedDesign} HighestCsr={HighestCsr}
                 HighestRank={HighestRank} HRankAttainedTier={HRankAttainedTier} />
+
 
             <div className="cardSection2">
                 <div>
@@ -92,6 +88,8 @@ export default function HaloPlayerCard({ p }) {
 
                     <h3 className="textTitle">TOTAL STATS</h3>
                     <div className='statsContainer'>
+
+                        {/* SECTION 1: 4 STATS ////////////////////////////////////////////////////////////// */}
                         <div className="statsContainer_B">
                             <div className="statsContainer_C">
                                 <div className="statMain">
@@ -111,6 +109,7 @@ export default function HaloPlayerCard({ p }) {
                             </div>
                         </div>
 
+                        {/* SECTION 2: 4 STATS ////////////////////////////////////////////////////////////// */}
                         <div className="statsContainer_B">
                             <div className="statsContainer_C">
                                 <div className="stat">
@@ -138,6 +137,7 @@ export default function HaloPlayerCard({ p }) {
                             </div> */}
                         </div>
 
+                        {/* SECTION 3: 4 STATS ////////////////////////////////////////////////////////////// */}
                         <div className="statsContainer_B">
                             <div className="statsContainer_C">
                                 <div className="stat">
@@ -156,7 +156,8 @@ export default function HaloPlayerCard({ p }) {
                                 </div>
                             </div>
                         </div>
-
+                        
+                        {/* SECTION 4: 4 STATS ////////////////////////////////////////////////////////////// */}
                         <div className="statsContainer_B">
                             <div className="statsContainer_C">
                                 <div className="stat">
@@ -177,6 +178,7 @@ export default function HaloPlayerCard({ p }) {
                         </div>
                     </div>
 
+                    {/* SHOT ACCURACY AND HEAD SHOT ACCURACY ///////////////////////////////////////////////////////////////// */}
                     <div className="statsContainer2">
                         <div className="statsContainer2B">
                             <div className="textStatsContainer">

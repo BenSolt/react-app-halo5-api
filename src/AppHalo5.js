@@ -34,6 +34,8 @@ function AppUpload() {
                 <Route path="/match-history" element={<MatchHistory />} />
                 {/* <Route path="/playlists" element={<HaloPlaylists />} /> */}
             </Routes>
+            
+            {/* <div className="homeImage"></div> */}
 
         </div>
 

@@ -39,7 +39,7 @@ function HaloPlaylists() {
                             {data.map(p => {
                                 return <div key={p.id}>
                                     <h3>{p?.name}</h3>
-                                    </div>
+                                </div>
                             })}
                         </div>
                     )}

@@ -9,8 +9,8 @@ function ArenaStats(props) {
 
     const Slayer = "892189e9-d712-4bdb-afa7-1ccab43fbed4";
     const Swat = "2323b76a-db98-4e03-aa37-e171cfbdd1a4";
-   const FFA = ''
-   const Arena = ''
+    const FFA = 'FFA'
+    const Arena = 'ARENA'
 
     useEffect(() => {
         axiosWithAuth()
@@ -41,11 +41,13 @@ function ArenaStats(props) {
     return (
         <div>
 
+            {/* SELECT PLAYLIST TO SEE SAID STATS /////////////////////////////////////////////////////////// */}
             <div className="statsContainer2">
+                <button className="playlistItem" onClick={(e) => setShowPlaylist(FFA)}>FFA?</button>
+                <button className="playlistItem" onClick={(e) => setShowPlaylist(Arena)}>Arena?</button>
                 <button className="playlistItem" onClick={(e) => setShowPlaylist(Slayer)}>Slayer</button>
-                <button className="playlistItem" onClick={(e) => setShowPlaylist(Slayer)}>B</button>
                 <button className="playlistItem" onClick={(e) => setShowPlaylist(Swat)}>Swat</button>
-                <button className="playlistItem" onClick={(e) => setShowPlaylist(Swat)}>C</button>
+
             </div>
 
             {props.CurrentRank.map(info => {
@@ -75,7 +77,7 @@ function ArenaStats(props) {
                 const hsResult = totalHeadshots / TotalKillsPlayer * 100;
                 let hsAccuracy = hsResult.toFixed(1);
 
-                // SELECT BY PLAYLIST //////////////////////////////////
+                // DISPLAY TIER NAME: Platinum 3, Diamond 6 etc ////////////////////////////////////////////////////////
                 if (info.PlaylistId === showPlaylist) {
                     const textRank = dataRank.map(r => {
                         return (
@@ -83,13 +85,24 @@ function ArenaStats(props) {
                                 {HighestDesignation === Number(r?.id) ? (
                                     <div className="rankImageContainer_B">
                                         <h3 className="textTier">{r.name}</h3>
+                                        {r?.tiers?.map(t => {
+                                            return (
+                                                <div key={t.id}>
+                                                    {HighestTier === Number(t?.id) ? (
+                                                        <div>
+                                                            <h3 className="textTier">{t.id}</h3>
+                                                        </div>
+                                                    ) : null}
+                                                </div>
+                                            )
+                                        })}
                                     </div>
                                 ) : null}
                             </div>
                         )
                     })
 
-
+                    // DISPLAY SAID RANK IMAGE: Platinum, Diamond, Onyx etc. //////////////////////////////////////////////////////
                     const imageRank = dataRank.map(r => {
                         return (
                             <div key={r.id}>
@@ -152,6 +165,7 @@ function ArenaStats(props) {
                                                     )
                                                 } else {
                                                     return (
+                                                        // NEED DIFFERENT METHOD FOR KEY.. since could have multiple No Data Avail..
                                                         <div key={0}>
                                                             {textRank}
                                                             <div className="rankImageContainer_B">
@@ -165,6 +179,7 @@ function ArenaStats(props) {
                                     </div>
                                 </div>
 
+                                {/* SECTION 1: 4 STATS ////////////////////////////////////////////////////////////// */}
                                 <div className="statsContainer_B">
                                     <div className="statsContainer_C">
                                         <div className="statMain">
@@ -184,6 +199,7 @@ function ArenaStats(props) {
                                     </div>
                                 </div>
 
+                                {/* SECTION 2: 4 STATS ////////////////////////////////////////////////////////////// */}
                                 <div className="statsContainer_B">
                                     <div className="statsContainer_C">
                                         <div className="stat">
@@ -203,6 +219,7 @@ function ArenaStats(props) {
                                     </div>
                                 </div>
 
+                                {/* SECTION 3: 4 STATS ////////////////////////////////////////////////////////////// */}
                                 <div className="statsContainer_B">
                                     <div className="statsContainer_C">
                                         <div className="stat">
@@ -222,6 +239,7 @@ function ArenaStats(props) {
                                     </div>
                                 </div>
 
+                                {/* SECTION 4: 4 STATS ////////////////////////////////////////////////////////////// */}
                                 <div className="statsContainer_B">
                                     <div className="statsContainer_C">
                                         <div className="stat">
@@ -243,6 +261,7 @@ function ArenaStats(props) {
                                 </div>
                             </div>
 
+                            {/* SHOT ACCURACY AND HEAD SHOT ACCURACY ///////////////////////////////////////////////////////////////// */}
                             <div className="statsContainer2">
                                 <div className="statsContainer2B">
                                     <div className="textStatsContainer">

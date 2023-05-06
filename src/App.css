@@ -42,6 +42,14 @@
 
 /* HALO 5 API STYLING VARIOUS COMPONENTS /////////////////////// */
 
+.homeImage {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 65vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  url('./api-halo5.jpg');
+}
+
 .SearchbarContainer {
   display: flex;
   justify-content: center;
@@ -85,9 +93,16 @@
   width: 128px;
 }
 
-
-
 @media only screen and (max-width: 425px) {
+
+  .homeImage{
+    background-repeat: no-repeat;
+    background-size: auto;
+    /* height: auto; */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('./api-halo5.jpg');
+     
+  }
 
   .SearchbarContainer {
     display: flex;

@@ -1,8 +1,5 @@
-import '../App.css';
-
 import React, { useEffect, useState } from "react";
-import axiosWithAuth from "../utils/axiosWithAuth";
-
+import '../App.css';
 
 function HaloPlayers() {
 
@@ -15,6 +12,7 @@ function HaloPlayers() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
+      // setIsSearching(false);
     }, 5000);
     return () => clearTimeout(timer);
   }, []);

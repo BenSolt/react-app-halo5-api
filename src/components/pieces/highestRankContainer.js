@@ -7,15 +7,15 @@ import '../../css/highestRank.css'
 function HighestRankContainer({ HRankAttainedDesign, HighestCsr, HighestRank, HRankAttainedTier, CurrentRank }) {
     const [dataRank, setDataRank] = useState([]);
 
-    // useEffect(() => {
-    //     axiosWithAuth()
-    //         .get('https://www.haloapi.com/metadata/h5/metadata/csr-designations')
-    //         .then(res => {
-    //             const info = res.data
-    //             // console.log(info);
-    //             setDataRank(info);
-    //         });
-    // }, []);
+    useEffect(() => {
+        axiosWithAuth()
+            .get('https://www.haloapi.com/metadata/h5/metadata/csr-designations')
+            .then(res => {
+                const info = res.data
+                // console.log(info);
+                setDataRank(info);
+            });
+    }, []);
 
     const imageRank = dataRank.map(r => {
         return (
@@ -26,7 +26,7 @@ function HighestRankContainer({ HRankAttainedDesign, HighestCsr, HighestRank, HR
                             return (
                                 <div key={t.id}>
                                     {HRankAttainedTier === Number(t?.id) ? (
-                                        <div className="peakImage">
+                                        <div className="peakImageContainer">
                                             <img className="highestRankImage" src={t.iconImageUrl} alt="rank images" />
                                             <div className="textCsr">
                                                 <h4 className="peakText">{HighestCsr} CSR</h4>
@@ -58,7 +58,6 @@ function HighestRankContainer({ HRankAttainedDesign, HighestCsr, HighestRank, HR
 
     return (
         <div className="cardSection1">
-            {/* <button onClick={getImageRank}>Rank</button> */}
             <h2 className="peakTextTitle">Highest Rank</h2>
             <div>
                 {nameRank}
