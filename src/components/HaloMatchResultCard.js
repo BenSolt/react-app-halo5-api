@@ -43,7 +43,8 @@ export default function HaloMapCard({ m }) {
                 <h4 className='textStats'>{m.TotalAssists}</h4>
                 <h4 className='textStats'>{m.TotalDeaths}</h4>
             </div>
-
+            
+            {/* MOBILE VIEW CONTAINER /////////////////////////////////////////////////////// */}
             <div className="toggleMobileContainer hideMobile" id={m.Player.Gamertag}>
                 <div className="mobileSection1">
                     <h4 className='textStats'>K/D Ratio</h4>

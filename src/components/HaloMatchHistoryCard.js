@@ -14,6 +14,7 @@ export default function HaloMapCard({ m }) {
     const [dataMatch, setDataMatch] = useState([]);
     const [showbar, setShowBar] = useState(false);
 
+    // DISPLAYS HALO 5 API: MAPS - IMAGE OF MAP PLAYED ///////////////////////////////////////
     useEffect(() => {
         axiosWithAuth()
             .get('https://www.haloapi.com/metadata/h5/metadata/maps')
@@ -26,7 +27,7 @@ export default function HaloMapCard({ m }) {
             });
     }, [])
 
-    // HALO 5 API: MATCH RESULT - CUSTOM ///////////////////////////////////////////
+    // HALO 5 API: MATCH RESULT - CUSTOM (MATCH ID)///////////////////////////////////////////
     function getMatchResults() {
         axiosWithAuth()
             .get(`https://www.haloapi.com/stats/h5/custom/matches/${m?.Id.MatchId}`)
@@ -67,6 +68,7 @@ export default function HaloMapCard({ m }) {
             });
     }, [])
 
+    // WANT TO ADD DATE PLAYED AND MATCH DURATION - NEED TO FIGURE OUT HOW TO DISPLAY ////////
     // console.log("DATE:",m.MatchCompletedDate.ISO8601Date.replace('T',' ').replace('Z', ''))
     //console.log(parse(m.MatchDuration))
 
@@ -135,8 +137,9 @@ export default function HaloMapCard({ m }) {
             <button className="buttonSearch" onClick={getMatchResults}>Match Results</button>
 
             <div className="sectionMatchCard">
-                <div className="matchCardContainer">
-                    {/* {showbar && <div className="matchCardContainer"> */}
+                {/* <div className="matchCardContainer"> */}
+                {/* MatchCardContainer HIDDEN UNTIL CLICK ON BUTTON, function: getMatchResults ///////////////////////////// */}
+                    {showbar && <div className="matchCardContainer">
                     <div className="matchCardContainer_Score">
                         <div className="ScoreSection">
                             {data.map(p => {
@@ -167,7 +170,7 @@ export default function HaloMapCard({ m }) {
                         </div>
                     </div>
 
-                    {/* MATCH RESULTS: Displayed if bigger than Mobile view, info also displayed (showbar) if searched for match results */}
+                    {/* MATCH RESULTS: DISPLAYED IF BIGGER THAN MOBILE VIEW, info also displayed (showbar) if searched for match results */}
                     <div className="matchCardContainer_Titles">
                         <div className="matchStatsResults">
                             <h4 className='textStats'>Rank</h4>
@@ -182,12 +185,12 @@ export default function HaloMapCard({ m }) {
                         </div>
                     </div>
 
-                    {/* MATCH RESULTS: 8 players stats/////////////////////////////////////////// */}
+                    {/* MATCH RESULTS: 8 PLAYERS STATS /////////////////////////////////////////// */}
                     {dataMatch.map(m => {
                         return <HaloMatchResultCard key={m.Player.Gamertag} m={m} />
                     })}
-                    {/* </div>} */}
-                </div>
+                    </div>}
+                {/* </div> */}
             </div>
         </div>
     )

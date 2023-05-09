@@ -21,7 +21,7 @@ function HaloPlaylists() {
         if (isLoading) return
     }, [isLoading])
 
-    // HALO 5 API: Player Match History //////////////////////////////////////////////////
+    // HALO 5 API: PLAYER MATCH HISTORY //////////////////////////////////////////////////////////////
     function getInfoMatch() {
         axiosWithAuth()
             // .get('https://www.haloapi.com/stats/h5/players/{player}/matches[?modes][&start][&count][&include-times]')
