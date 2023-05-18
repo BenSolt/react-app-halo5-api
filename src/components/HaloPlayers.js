@@ -111,7 +111,9 @@ function HaloPlayers() {
             </div>
           )}
 
-        </div>) : (<div></div>)}
+        </div>) : (<div>
+          <h3 className="searchtext">Xbox Live username example: Xtianumbra </h3>
+          </div>)}
       </div>
     </div>
   );
