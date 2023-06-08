@@ -4,9 +4,6 @@ import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 import HaloPlayerCard from "../components/HaloPlayerCard";
-import TestHaloCard from "../components/TestHaloCard";
-
-// import TestLoading from "../components/TestLoading";
 
 function HaloPlayers() {
 
@@ -78,8 +75,6 @@ function HaloPlayers() {
 
   return (
     <div>
-      {/* <TestLoading /> */}
-
       <div className="SearchbarContainer" >
         <h3 className="searchtext">Search Player Stats:</h3>
         <div className="inputContainer">
@@ -102,8 +97,6 @@ function HaloPlayers() {
             <div><h2>Loading...</h2></div>
           ) : (
             <div className="cardContainer">
-
-              {/* <TestHaloCard /> */}
 
               {data.map(p => {
                 return < HaloPlayerCard key={p.Id} p={p} />
